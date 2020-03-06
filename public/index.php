@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <nav id="main-header" class="navbar navbar-expand-sm navbar-dark bg-dark py-3">
+    <nav id="main-header" class="navbar navbar-expand-md navbar-dark bg-dark p-md-0">
         <div class="container">
             <a href="#" class="navbar-brand">adingal</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarNav" class="collapse navbar-collapse flex-column">
-                <div class="d-flex ml-auto py-2">
-                    <a class="mr-2 text-white p-1" href="#">
+                <div class="d-flex ml-auto py-1 pr-md-1">
+                    <a class="mr-2 text-white p-md-1" href="#">
                         <i class="fa fa-user"></i> Username
                     </a>
                     <a class="ml-auto text-white p-1" href="#">
