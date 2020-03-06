@@ -6,6 +6,7 @@
     <meta name="author" content="Alex Dingal">
     <meta name="description" content="inventory management system project">
     <title>IMS - Inventory Management System</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -18,8 +19,12 @@
             </button>
             <div id="navbarNav" class="collapse navbar-collapse flex-column">
                 <div class="d-flex ml-auto py-2">
-                    <span class="mr-2 text-white">Username</span>
-                    <a id="logoutBtn" class="ml-auto text-white" href="#">Logout</a>
+                    <a class="mr-2 text-white p-1" href="#">
+                        <i class="fa fa-user"></i> Username
+                    </a>
+                    <a class="ml-auto text-white p-1" href="#">
+                        <i class="fa fa-sign-out-alt"></i> Logout
+                    </a>
                 </div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
