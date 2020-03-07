@@ -1,3 +1,5 @@
+<?php require_once('../private/init.php'); ?>
+
 <?php include('../private/shared_items/main_header.php'); ?>
 
     <div id="content">
