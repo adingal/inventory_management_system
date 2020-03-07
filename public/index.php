@@ -1,7 +1,7 @@
 <?php include('../private/shared_items/main_header.php'); ?>
 
     <div id="content">
-       <div id="login" class="py-5">
+       <div id="login" class="d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-lg-4 mx-auto">
