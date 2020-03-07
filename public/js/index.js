@@ -9,7 +9,7 @@
 
     // Set margin top of form base on current window height
     if (curWindowHeight <= 400) {
-        loginMarginTop = (curWindowHeight / 2) * 0.10;
+        loginMarginTop = (curWindowHeight / 2) * 0.05;
     } else {
         loginMarginTop = (curWindowHeight / 2) * 0.25;
     }
