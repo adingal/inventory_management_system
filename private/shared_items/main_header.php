@@ -19,10 +19,10 @@
             </button>
             <div id="navbarNav" class="collapse navbar-collapse flex-column">
                 <div class="d-flex ml-auto py-1 pr-md-1">
-                    <a class="mr-2 text-white p-md-1" href="#">
+                    <a class="nav-link text-light mr-2 p-md-1" href="#">
                         <i class="fa fa-user"></i> Username
                     </a>
-                    <a class="ml-auto text-white p-1" href="#">
+                    <a class="ml-auto nav-link text-light p-1" href="#">
                         <i class="fa fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
