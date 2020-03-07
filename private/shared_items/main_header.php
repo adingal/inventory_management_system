@@ -14,29 +14,33 @@
     <nav id="main-header" class="navbar navbar-expand-md navbar-dark bg-dark p-md-0">
         <div class="container">
             <a href="#" class="navbar-brand">adingal</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarNav" class="collapse navbar-collapse flex-column">
-                <div class="d-flex ml-auto py-1 pr-md-1">
-                    <a class="nav-link text-light mr-2 p-md-1" href="#">
-                        <i class="fa fa-user"></i> Username
-                    </a>
-                    <a class="ml-auto nav-link text-light p-1" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Logout
-                    </a>
+
+            <?php if (is_logged_in()) { ?>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarNav" class="collapse navbar-collapse flex-column">
+                    <div class="d-flex ml-auto py-1 pr-md-1">
+                        <a class="nav-link text-light mr-2 p-md-1" href="#">
+                            <i class="fa fa-user"></i> Username
+                        </a>
+                        <a class="ml-auto nav-link text-light p-1" href="#">
+                            <i class="fa fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Items</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Transactions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Users</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Items</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Transactions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Users</a>
-                    </li>
-                </ul>
-            </div>
+            <?php } ?>
         </div>
     </nav>
