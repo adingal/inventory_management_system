@@ -5,15 +5,20 @@
     const windowInnerHeight = window.innerHeight;
     const curWindowHeight = parseInt(windowInnerHeight);
 
-    let loginMarginTop;
+    content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
 
-    // Set margin top of form base on current window height
-    if (curWindowHeight <= 400) {
-        loginMarginTop = (curWindowHeight / 2) * 0.07;
-    } else {
-        loginMarginTop = (curWindowHeight / 2) * 0.22;
+    // Test if current page is the login page
+    if (loginForm) {
+        let loginMarginTop;
+
+        // Set margin top of form base on current window height
+        if (curWindowHeight <= 400) {
+            loginMarginTop = (curWindowHeight / 2) * 0.07;
+        } else {
+            loginMarginTop = (curWindowHeight / 2) * 0.22;
+        }
+                
+        loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
     }
 
-    content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
-    loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
 })();
