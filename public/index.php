@@ -1,4 +1,8 @@
-<?php require_once('../private/init.php'); ?>
+<?php
+    require_once('../private/init.php');
+
+    $page_title = 'Inventory Management System';
+?>
 
 <?php include('../private/shared_items/main_header.php'); ?>
 

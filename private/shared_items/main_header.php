@@ -1,3 +1,5 @@
+<?php $page_title = $page_title ?? ''; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Alex Dingal">
     <meta name="description" content="inventory management system project">
-    <title>IMS - Inventory Management System</title>
+    <title><?php echo $page_title; ?></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
@@ -31,13 +33,13 @@
                     </div>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Items</a>
+                            <a href="<?php echo WWW_ROOT . '/items/index.php'; ?>" class="nav-link">Items</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Transactions</a>
+                            <a href="<?php echo WWW_ROOT . '/transactions/index.php'; ?>" class="nav-link">Transactions</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Users</a>
+                            <a href="<?php echo WWW_ROOT . '/users/index.php'; ?>" class="nav-link">Users</a>
                         </li>
                     </ul>
                 </div>
