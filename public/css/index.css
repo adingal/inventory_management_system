@@ -1,2 +1,5 @@
 #main-header {
     min-height: 80px;}
+
+#actions a {
+    min-width: 90px;}

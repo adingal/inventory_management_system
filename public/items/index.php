@@ -10,18 +10,22 @@
     <div id="actions" class="pt-5 pb-2 mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
-                    <select name="selected_item" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                <div class="col-md-3 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="selected_item">Item ID</label>
+                        </div>
+                        <select class="custom-select" id="selected_item">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-10 text-right">
+                <div class="col-md-9 text-center text-md-right">
                     <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Edit</a>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-trash"></i> Delete</a>
+                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
+                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                 </div>
             </div>
         </div>
