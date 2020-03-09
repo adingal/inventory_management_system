@@ -15,7 +15,7 @@
 <body>
     <nav id="main-header" class="navbar navbar-expand-md navbar-dark bg-dark p-md-0">
         <div class="container">
-            <a href="#" class="navbar-brand">adingal</a>
+            <a href="<?php echo WWW_ROOT . '/index.php'; ?>" class="navbar-brand">adingal</a>
 
             <?php if (is_logged_in()) { ?>
 
