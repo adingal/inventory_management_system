@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div id="items">
+    <div id="transactions">
         <div class="container">
             <div class="row">
                 <div class="col">
