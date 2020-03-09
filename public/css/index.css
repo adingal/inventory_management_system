@@ -3,3 +3,6 @@
 
 #actions a {
     min-width: 90px;}
+
+#actions label {
+    min-width: 130px;}

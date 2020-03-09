@@ -10,7 +10,7 @@
     <div id="actions" class="pt-5 pb-2 mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 mb-2">
+                <div id="id_options" class="col-md-3 mb-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="selected_item">Transaction ID</label>
