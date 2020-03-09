@@ -6,3 +6,8 @@
 
 #actions label {
     min-width: 150px;}
+
+@media (max-width: 768px) {
+    #actions a {
+        width: 32%;}    
+}
