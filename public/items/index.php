@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-8 text-center text-md-right">
                     <a href="<?php echo WWW_ROOT . '/items/add.php'; ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
+                    <a href="<?php echo WWW_ROOT . '/items/edit.php'; ?>" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
                     <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                 </div>
             </div>

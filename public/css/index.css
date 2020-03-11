@@ -13,10 +13,7 @@ body {
 
 #actions label {
     min-width: 150px;}
-
-#add_items textarea {
-    border: 1px solid #ced4da;}
-
+    
 @media (max-width: 768px) {
     #actions a {
         width: 32%;}    
