@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form action="#" method="post">
+                <form action="<?php echo WWW_ROOT . '/items/edit.php'; ?>" method="post">
                     <h1 class="display-5">Edit item...</h1>
                     <div class="form-group mb-2">
                         <label for="item_name">Item Name</label>
