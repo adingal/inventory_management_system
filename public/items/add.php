@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group mb-2 text-right">
                         <input type="submit" class="btn btn-dark" value="Submit">
-                        <input type="submit" class="btn btn-dark" value="Cancel">
+                        <a href="<?php echo WWW_ROOT . '/items/index.php'; ?>" class="btn btn-dark">Cancel</a>
                     </div>
                 </form>
             </div>
