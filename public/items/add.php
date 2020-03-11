@@ -8,7 +8,7 @@
 
 <div id="content">
 
-<div id="add_items" class="py-5">
+<div id="add_item" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
@@ -31,7 +31,7 @@
                         <input type="text" class="form-control" name="added_by">
                     </div>
                     <div class="form-group mb-2 text-right">
-                        <input type="submit" class="btn btn-dark" value="Submit">
+                        <input type="submit" class="btn btn-dark" value="Add">
                         <a href="<?php echo WWW_ROOT . '/items/index.php'; ?>" class="btn btn-dark">Cancel</a>
                     </div>
                 </form>

@@ -14,7 +14,7 @@ body {
 #actions label {
     min-width: 150px;}
 
-#add_items .btn {
+#add_item .btn {
     width: 85px;}
     
 @media (max-width: 768px) {
