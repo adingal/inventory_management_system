@@ -20,4 +20,6 @@
     require_once('db_functions.php');
     require_once('authentication.php');
 
+    $db = db_connect();
+
 ?>
