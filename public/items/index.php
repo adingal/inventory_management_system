@@ -53,12 +53,12 @@
                         <tbody>
                             <?php while ($item = mysqli_fetch_assoc($items)) { ?>
                                 <tr>
-                                    <td><?php echo $item['item_id']; ?></td>
-                                    <td><?php echo $item['item_name']; ?></td>
-                                    <td><?php echo $item['item_description']; ?></td>
-                                    <td><?php echo $item['quantity']; ?></td>
-                                    <td><?php echo $item['added_by']; ?></td>
-                                    <td><?php echo $item['added_date']; ?></td>
+                                    <td>    <?php echo $item['item_id'];            ?></td>
+                                    <td>    <?php echo $item['item_name'];          ?></td>
+                                    <td>    <?php echo $item['item_description'];   ?></td>
+                                    <td>    <?php echo $item['quantity'];           ?></td>
+                                    <td>    <?php echo $item['added_by'];           ?></td>
+                                    <td>    <?php echo $item['added_date'];         ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
