@@ -17,6 +17,7 @@
     define("WWW_ROOT", $doc_root);
     
     require_once('helper_functions.php');
+    require_once('db_functions.php');
     require_once('authentication.php');
 
 ?>
