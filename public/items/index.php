@@ -2,6 +2,11 @@
     require_once('../../private/init.php');
 
     $page_title = 'Items';
+
+    $sql = "SELECT * FROM items";
+
+    $items = mysqli_query($db, $sql);
+    confirm_result_set($items);
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -46,30 +51,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Item Name 1</td>
-                                <td>Description 1</td>
-                                <td>3</td>
-                                <td>Juan Dela Cruz</td>
-                                <td>March 7, 2020</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Item Name 2</td>
-                                <td>Description 2</td>
-                                <td>6</td>
-                                <td>Jose Manalo</td>
-                                <td>March 18, 2020</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Item Name 3</td>
-                                <td>Description 3</td>
-                                <td>9</td>
-                                <td>Pepe Smith</td>
-                                <td>May 14, 2020</td>                            
-                            </tr>
+                            <?php while ($item = mysqli_fetch_assoc($items)) { ?>
+                                <tr>
+                                    <td><?php echo $item['item_id']; ?></td>
+                                    <td><?php echo $item['item_name']; ?></td>
+                                    <td><?php echo $item['item_description']; ?></td>
+                                    <td><?php echo $item['quantity']; ?></td>
+                                    <td><?php echo $item['added_by']; ?></td>
+                                    <td><?php echo $item['added_date']; ?></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
