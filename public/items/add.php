@@ -12,6 +12,9 @@
 
         $result = insert_items($item);
 
+        if ($result) {
+            redirect_to(url_for('/items/index.php'));
+        }
     }
 ?>
 
