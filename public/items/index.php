@@ -3,10 +3,7 @@
 
     $page_title = 'Items';
 
-    $sql = "SELECT * FROM items";
-
-    $items = mysqli_query($db, $sql);
-    confirm_result_set($items);
+    $items = find_all_items();
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
