@@ -2,6 +2,29 @@
     require_once('../../private/init.php');
 
     $page_title = 'Add Item';
+    
+    if (is_post()) {
+        $item = [];
+        $item['item_name'] = $_POST['item_name'];
+        $item['item_description'] = $_POST['description'];
+        $item['quantity'] = $_POST['quantity'];
+        $item['added_by'] = $_POST['added_by'];
+        $item['added_date'] = $_POST['added_date'];
+
+        $sql = "INSERT INTO items ";
+        $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
+        $sql .= "VALUES ";
+        $sql .= "(";
+        $sql .= "'" . $item['item_name'] . "', ";
+        $sql .= "'" . $item['item_description'] . "', ";
+        $sql .= "'" . $item['quantity'] . "', ";
+        $sql .= "'" . $item['added_by'] . "', ";
+        $sql .= "'" . $item['added_date'] . "'";
+        $sql .= ")";
+
+        $result = mysqli_query($db, $sql);
+
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
