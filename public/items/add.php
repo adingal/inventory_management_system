@@ -10,18 +10,7 @@
         $item['quantity'] = $_POST['quantity'];
         $item['added_by'] = $_POST['added_by'];
 
-        $sql = "INSERT INTO items ";
-        $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
-        $sql .= "VALUES ";
-        $sql .= "(";
-        $sql .= "'" . $item['item_name'] . "', ";
-        $sql .= "'" . $item['item_description'] . "', ";
-        $sql .= "'" . $item['quantity'] . "', ";
-        $sql .= "'" . $item['added_by'] . "', ";
-        $sql .= "NOW()";
-        $sql .= ")";
-
-        $result = mysqli_query($db, $sql);
+        $result = insert_items($item);
 
     }
 ?>
