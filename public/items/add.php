@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <form action="<?php echo WWW_ROOT . '/items/add.php'; ?>" method="post">
+                    <form action="<?php echo url_for('/items/add.php'); ?>" method="post">
                         <h1 class="display-5">Add new item...</h1>
                         <div class="form-group mb-2">
                             <label for="item_name">Item Name</label>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-2 text-right">
                             <input type="submit" class="btn btn-dark" value="Add">
-                            <a href="<?php echo WWW_ROOT . '/items/index.php'; ?>" class="btn btn-dark">Cancel</a>
+                            <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
                 </div>
