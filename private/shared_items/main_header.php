@@ -10,12 +10,12 @@
     <title><?php echo $page_title; ?></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo WWW_ROOT . '/css/index.css'; ?>">
+    <link rel="stylesheet" href="<?php echo url_for('/css/index.css'); ?>">
 </head>
 <body>
     <nav id="main-header" class="navbar navbar-expand-md navbar-dark bg-dark p-md-0">
         <div class="container">
-            <a href="<?php echo WWW_ROOT . '/index.php'; ?>" class="navbar-brand">adingal</a>
+            <a href="<?php echo url_for('/index.php'); ?>" class="navbar-brand">adingal</a>
 
             <?php if (is_logged_in()) { ?>
 
@@ -33,13 +33,13 @@
                     </div>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="<?php echo WWW_ROOT . '/items/index.php'; ?>" class="nav-link">Items</a>
+                            <a href="<?php echo url_for('/items/index.php'); ?>" class="nav-link">Items</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo WWW_ROOT . '/transactions/index.php'; ?>" class="nav-link">Transactions</a>
+                            <a href="<?php echo url_for('/transactions/index.php'); ?>" class="nav-link">Transactions</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo WWW_ROOT . '/users/index.php'; ?>" class="nav-link">Users</a>
+                            <a href="<?php echo url_for('/users/index.php'); ?>" class="nav-link">Users</a>
                         </li>
                     </ul>
                 </div>
