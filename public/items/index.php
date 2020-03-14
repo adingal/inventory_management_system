@@ -4,7 +4,7 @@
     $page_title = 'Items';
 
     $items = find_all_items();
-    $item_count = mysqli_num_rows($items);
+    $item_ids = find_all_items_id();
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -20,10 +20,10 @@
                         </div>
                         <select class="custom-select" id="selected_item">
                             <?php
-                                for ($i = 1; $i <= $item_count; $i++) {
-                                    echo "<option value=\"" . $i . "\">";
-                                    echo $i . "</option>";
-                                }                                
+                                while ($item_id = mysqli_fetch_row($item_ids)) {
+                                    echo "<option value=\"" . $item_id[0] . "\">";
+                                    echo $item_id[0] . "</option>";
+                                }                              
                             ?>
                         </select>
                     </div>

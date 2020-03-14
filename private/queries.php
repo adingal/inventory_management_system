@@ -14,7 +14,8 @@
     function find_all_items_id() {
         global $db;
 
-        $sql = "SELECT item_id FROM items";
+        $sql = "SELECT item_id FROM items ";
+        $sql .= "ORDER BY item_id ASC";
         $result = mysqli_query($db, $sql); 
 
         return $result;
