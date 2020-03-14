@@ -11,21 +11,11 @@
         return $result;
     }
 
-    function insert_items($item) {
+    function find_all_items_id() {
         global $db;
 
-        $sql = "INSERT INTO items ";
-        $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
-        $sql .= "VALUES ";
-        $sql .= "(";
-        $sql .= "'" . $item['item_name'] . "', ";
-        $sql .= "'" . $item['item_description'] . "', ";
-        $sql .= "'" . $item['quantity'] . "', ";
-        $sql .= "'" . $item['added_by'] . "', ";
-        $sql .= "NOW()";
-        $sql .= ")";
-
-        $result = mysqli_query($db, $sql);
+        $sql = "SELECT item_id FROM items";
+        $result = mysqli_query($db, $sql); 
 
         return $result;
     }
@@ -43,6 +33,25 @@
         
         // Returns associative array
         return $item;
+    }
+
+    function insert_items($item) {
+        global $db;
+
+        $sql = "INSERT INTO items ";
+        $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
+        $sql .= "VALUES ";
+        $sql .= "(";
+        $sql .= "'" . $item['item_name'] . "', ";
+        $sql .= "'" . $item['item_description'] . "', ";
+        $sql .= "'" . $item['quantity'] . "', ";
+        $sql .= "'" . $item['added_by'] . "', ";
+        $sql .= "NOW()";
+        $sql .= ")";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
     }
 
     function delete_item($id) {
