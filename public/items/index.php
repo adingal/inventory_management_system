@@ -4,6 +4,7 @@
     $page_title = 'Items';
 
     $items = find_all_items();
+    $item_count = mysqli_num_rows($items);
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -18,9 +19,12 @@
                             <label class="input-group-text" for="selected_item">Item ID</label>
                         </div>
                         <select class="custom-select" id="selected_item">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <?php
+                                for ($i = 1; $i <= $item_count; $i++) {
+                                    echo "<option value=\"" . $i . "\">";
+                                    echo $i . "</option>";
+                                }                                
+                            ?>
                         </select>
                     </div>
                 </div>
