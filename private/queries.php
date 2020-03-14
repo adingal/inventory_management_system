@@ -49,7 +49,7 @@
         global $db;
 
         $sql = "DELETE FROM items ";
-        $sql .= "WHERE id = '" . $id . "' ";
+        $sql .= "WHERE item_id = '" . $id . "' ";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
