@@ -4,11 +4,14 @@
     $page_title = 'Delete Item';
 
     $id = $_GET['id'] ?? NULL;
-
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
 
+    $result = delete_item($id);
+    if ($result) {
+        redirect_to(url_for('/items/index.php'));
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
