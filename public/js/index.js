@@ -27,11 +27,11 @@
 })();
 
 // Set href for edit button on items index page depending on selected id
-(function setItemsEditBtn() {
+(function setItemsViewBtn() {
     const selectedItem = document.getElementById('selected_item');
-    const actionsEditBtn = document.querySelector('#actions a[href*="edit.php"]');
+    const actionsViewBtn = document.querySelector('#actions a[href*="view.php"]');
     
-    if (actionsEditBtn) {
+    if (actionsViewBtn) {
         selectedItem.addEventListener('click', handleChange);
     
         function handleChange() {
@@ -39,17 +39,17 @@
             // Get currently selected id
             const selectedID = selectedItem.options[selectedItem.selectedIndex].value;
             // Set new href on edit button
-            const newHref = actionsEditBtn.href + '?id=' + selectedID;
-            actionsEditBtn.setAttribute('href', newHref);
+            const newHref = actionsViewBtn.href + '?id=' + selectedID;
+            actionsViewBtn.setAttribute('href', newHref);
         }
     
         function handleHref() {
-            const curHref = actionsEditBtn.href;
+            const curHref = actionsViewBtn.href;
             // Find .php on href
             const findPhp = curHref.indexOf('.php');
             // Set new href on edit button
             const newHref = curHref.substr(0, findPhp + 4);
-            actionsEditBtn.setAttribute('href', newHref);
+            actionsViewBtn.setAttribute('href', newHref);
         }
     }
 })();
