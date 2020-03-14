@@ -3,7 +3,12 @@
 
     $page_title = 'View Item';
 
-    $id = $_GET['id'] ?? '1';
+    $id = $_GET['id'] ?? NULL;
+
+    if (is_null($id)) {
+        redirect_to(url_for('/items/index.php'));
+    }
+
     $item = find_item_by_id($id);
     $formatted_date = date_format(date_create($item['added_date']), 'M d, Y');
 ?>
@@ -39,8 +44,8 @@
                         </div>
                         <div class="form-group mb-2 text-right">
                             <a href="<?php echo url_for('/items/edit.php?id=' . $id); ?>" class="btn btn-dark">Edit</a>
-                            <a href="<?php echo url_for('/items/delete.php?id=' . $id); ?>" class="btn btn-danger">Delete</a>
-                            <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-secondary">Cancel</a>
+                            <a href="<?php echo url_for('/items/delete.php?id=' . $id); ?>" class="btn btn-dark">Delete</a>
+                            <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                 </div>
             </div>
