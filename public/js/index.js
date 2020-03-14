@@ -17,7 +17,10 @@
         } else {
             loginMarginTop = (curWindowHeight / 2) * 0.22;
         }
-                
+        
+        // Convert to string for concatenation
+        loginMarginTop = loginMarginTop.toString();
+        
         loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
     }
 
