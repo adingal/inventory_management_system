@@ -45,4 +45,16 @@
         return $item;
     }
 
+    function delete_item($id) {
+        global $db;
+
+        $sql = "DELETE FROM items ";
+        $sql .= "WHERE id = '" . $id . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
 ?>
