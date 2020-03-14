@@ -1,5 +1,5 @@
 // Align form on middle and slightly higher
-(function alignForm() {
+(function setContentHeight() {
     const content = document.getElementById('content');
     const loginForm = document.querySelector('#login form');
     const windowInnerHeight = window.innerHeight;
