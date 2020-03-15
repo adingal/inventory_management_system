@@ -56,6 +56,21 @@
         return $result;
     }
 
+    function update_item($item) {
+        global $db;
+
+        $sql = "UPDATE items SET ";
+        $sql .= "item_name = '" . $item['item_name'] . "', ";
+        $sql .= "item_description = '" . $item['item_description'] . "', ";
+        $sql .= "quantity = '" . $item['quantity'] . "' ";
+        $sql .= "WHERE item_id = '" . $item['item_id'] . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
     function delete_item($id) {
         global $db;
 

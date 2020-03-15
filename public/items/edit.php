@@ -3,7 +3,23 @@
 
     $page_title = 'Edit Item';
 
-    $id = $_GET['id'] ?? '';
+    $id = $_GET['id'] ?? NULL;
+
+    if (is_null($id)) {
+        redirect_to(url_for('/items/index.php'));
+    } elseif (is_post()) {
+        $item = [];
+        $item['item_id'] = $id;
+        $item['item_name'] = $_POST['item_name'];
+        $item['item_description'] = $_POST['description'];
+        $item['quantity'] = $_POST['quantity'];
+
+        $result = update_item($item);
+
+        if ($result) {
+            redirect_to(url_for('/items/index.php'));
+        }
+    }
     
     $item = find_item_by_id($id);
     $formatted_date = date_format(date_create($item['added_date']), 'M d, Y');
@@ -17,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form action="<?php echo url_for('/items/edit.php'); ?>" method="post">
+                <form action="<?php echo url_for('/items/edit.php?id=' . $id); ?>" method="post">
                     <h1 class="display-5">Edit item...</h1>
                     <div class="form-group mb-2">
                         <label for="item_name">Item Name</label>
