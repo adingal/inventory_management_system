@@ -3,7 +3,7 @@
     function url_for($path) {
         // Add the leading '/' if not present
         if ($path[0] != '/') {
-            $path = "/" . $path;
+            $path = '/' . $path;
         }
         return WWW_ROOT . $path;
     }
@@ -13,7 +13,7 @@
     }
 
     function redirect_to($location) {
-        header("Location: " . $location);
+        header('Location: ' . $location);
         exit;        
     }
 

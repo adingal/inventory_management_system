@@ -1,4 +1,5 @@
 <?php
+    # Note: Use double quotes for added protection 
 
     // Items
     function find_all_items() {

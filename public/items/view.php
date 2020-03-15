@@ -36,11 +36,11 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_by">Added By</label>
-                            <input type="text" class="form-control" name="added_by" <?php echo "value=\"" . $item['added_by'] . "\" disabled"; ?>>
+                            <input type="text" class="form-control" name="added_by" <?php echo 'value="' . $item['added_by'] . '"'; ?> disabled>
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_date">Added Date</label>
-                            <input type="text" class="form-control" name="added_date" <?php echo "value=\"" . $formatted_date . "\" disabled"; ?>>
+                            <input type="text" class="form-control" name="added_date" <?php echo 'value="' . $formatted_date . '"'; ?> disabled>
                         </div>
                         <div class="form-group mb-2 text-right">
                             <a href="<?php echo url_for('/items/edit.php?id=' . $id); ?>" class="btn btn-dark">Edit</a>

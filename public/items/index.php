@@ -21,8 +21,8 @@
                         <select class="custom-select" id="selected_item">
                             <?php
                                 while ($item_id = mysqli_fetch_row($item_ids)) {
-                                    echo "<option value=\"" . $item_id[0] . "\">";
-                                    echo $item_id[0] . "</option>";
+                                    echo '<option value="' . $item_id[0] . '">';
+                                    echo $item_id[0] . '</option>';
                                 }                              
                             ?>
                         </select>
