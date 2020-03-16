@@ -33,27 +33,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form action="<?php echo url_for('/items/edit.php?id=' . $id); ?>" method="post">
+                <form action="<?php echo url_for('/items/edit.php?id=' . h(u($id))); ?>" method="post">
                     <h1 class="display-5">Edit item...</h1>
                     <div class="form-group mb-2">
                         <label for="item_name">Item Name</label>
-                        <input type="text" class="form-control" name="item_name" value="<?php echo $item['item_name']; ?>">
+                        <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>">
                     </div>
                     <div class="form-group mb-2">
                         <label for="description">Description</label>
-                        <textarea class="form-control" name="description" cols="30" rows="5"><?php echo $item['item_description']; ?></textarea>
+                        <textarea class="form-control" name="description" cols="30" rows="5"><?php echo h($item['item_description']); ?></textarea>
                     </div>
                     <div class="form-group mb-2">
                         <label for="quantity">Quantity</label>
-                        <input type="number" class="form-control" name="quantity" min="1" max="100" value="<?php echo $item['quantity']; ?>">
+                        <input type="number" class="form-control" name="quantity" min="1" max="100" value="<?php echo h($item['quantity']); ?>">
                     </div>
                     <div class="form-group mb-2">
                         <label for="added_by">Added By</label>
-                        <input type="text" class="form-control" name="added_by" <?php echo 'value="' . $item['added_by'] . '" disabled'; ?>>
+                        <input type="text" class="form-control" name="added_by" <?php echo 'value="' . h($item['added_by']) . '" disabled'; ?>>
                     </div>
                     <div class="form-group mb-2">
                         <label for="added_date">Added Date</label>
-                        <input type="text" class="form-control" name="added_date" <?php echo 'value="' . $formatted_date . '" disabled'; ?>>
+                        <input type="text" class="form-control" name="added_date" <?php echo 'value="' . ($formatted_date) . '" disabled'; ?>>
                     </div>
                     <div class="form-group mb-2 text-right">
                         <input type="submit" class="btn btn-dark" value="Edit">
