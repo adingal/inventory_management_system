@@ -50,27 +50,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Jose</td>
-                                <td>Manalo</td>
-                                <td>jm@gmail.com</td>
-                                <td>March 9, 2020</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Pepe</td>
-                                <td>Smith</td>
-                                <td>ps@yahoo.com</td>
-                                <td>March 25, 2020</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Mich</td>
-                                <td>Scott</td>
-                                <td>ms@aol.com</td>
-                                <td>May 12, 2020</td>                            
-                            </tr>
+                            <?php while ($user = mysqli_fetch_assoc($users)) { ?>
+                                <tr>
+                                    <td><?php echo h($user['user_id']); ?></td>
+                                    <td><?php echo h($user['first_name']); ?></td>
+                                    <td><?php echo h($user['last_name']); ?></td>
+                                    <td><?php echo h($user['email']); ?></td>
+                                    <td><?php echo h($user['registered_date']); ?></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
