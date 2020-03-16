@@ -2,6 +2,9 @@
     require_once('../../private/init.php');
 
     $page_title = 'Users';
+
+    $users = find_all_users();    
+    $user_ids = find_all_users_id();
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -24,8 +27,7 @@
                 </div>
                 <div class="col-md-9 text-center text-md-right">
                     <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    <a href="<?php echo url_for('/users/view.php?id=1'); ?>" class="btn btn-success"><i class="far fa-eye"></i> View</a>
                 </div>
             </div>
         </div>
