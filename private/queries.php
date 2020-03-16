@@ -26,7 +26,7 @@
         global $db;
 
         $sql = "SELECT * FROM items ";
-        $sql .= "WHERE item_id = '" . $id . "'";
+        $sql .= "WHERE item_id = '" . db_escape($db, $id) . "'";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
@@ -44,10 +44,10 @@
         $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
         $sql .= "VALUES ";
         $sql .= "(";
-        $sql .= "'" . $item['item_name'] . "', ";
-        $sql .= "'" . $item['item_description'] . "', ";
-        $sql .= "'" . $item['quantity'] . "', ";
-        $sql .= "'" . $item['added_by'] . "', ";
+        $sql .= "'" . db_escape($db, $item['item_name']) . "', ";
+        $sql .= "'" . db_escape($db, $item['item_description']) . "', ";
+        $sql .= "'" . db_escape($db, $item['quantity']) . "', ";
+        $sql .= "'" . db_escape($db, $item['added_by']) . "', ";
         $sql .= "NOW()";
         $sql .= ")";
 
@@ -60,10 +60,10 @@
         global $db;
 
         $sql = "UPDATE items SET ";
-        $sql .= "item_name = '" . $item['item_name'] . "', ";
-        $sql .= "item_description = '" . $item['item_description'] . "', ";
-        $sql .= "quantity = '" . $item['quantity'] . "' ";
-        $sql .= "WHERE item_id = '" . $item['item_id'] . "' ";
+        $sql .= "item_name = '" . db_escape($db, $item['item_name']) . "', ";
+        $sql .= "item_description = '" . db_escape($db, $item['item_description']) . "', ";
+        $sql .= "quantity = '" . db_escape($db, $item['quantity']) . "' ";
+        $sql .= "WHERE item_id = '" . db_escape($db, $item['item_id']) . "' ";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
@@ -75,7 +75,7 @@
         global $db;
 
         $sql = "DELETE FROM items ";
-        $sql .= "WHERE item_id = '" . $id . "' ";
+        $sql .= "WHERE item_id = '" . db_escape($db, $id) . "' ";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
