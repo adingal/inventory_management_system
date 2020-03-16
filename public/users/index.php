@@ -10,7 +10,7 @@
     <div id="actions" class="pt-5 pb-2 mt-3">
         <div class="container">
             <div class="row">
-                <div id="id_options" class="col-md-4 mb-2">
+                <div id="id_options" class="col-md-3 mb-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="selected_item">User ID</label>
@@ -22,7 +22,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-8 text-center text-md-right">
+                <div class="col-md-9 text-center text-md-right">
                     <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                     <a href="#" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
                     <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
