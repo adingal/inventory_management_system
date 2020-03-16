@@ -102,6 +102,21 @@
         $result = mysqli_query($db, $sql); 
 
         return $result;
-    }    
+    }
+    
+    function find_user_by_id($id) {
+        global $db;
+
+        $sql = "SELECT * FROM users ";
+        $sql .= "WHERE user_id = '" . db_escape($db, $id) . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+
+        // Returns associative array
+        return $user;
+    }
 
 ?>
