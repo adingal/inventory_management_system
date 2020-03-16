@@ -15,7 +15,7 @@
         if ($result) {
             redirect_to(url_for('/items/index.php'));
         }
-    }
+    }   
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -25,15 +25,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <form action="<?php echo url_for('/items/delete.php?id=' . $id); ?>" method="post">
+                    <form action="<?php echo url_for('/items/delete.php?id=' . h(u($id))); ?>" method="post">
                         <h1 class="display-5">Delete item...</h1>
                         <div class="form-group mb-2">
                             <label for="item_id">Item ID</label>
-                            <input type="text" class="form-control" name="item_id" value="<?php echo $item['item_id']; ?>" disabled>
+                            <input type="text" class="form-control" name="item_id" value="<?php echo h($item['item_id']); ?>" disabled>
                         </div>
                         <div class="form-group mb-2">
                             <label for="item_name">Item Name</label>
-                            <input type="text" class="form-control" name="item_name" value="<?php echo $item['item_name']; ?>" disabled>
+                            <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
                         </div>
                         <div class="form-group mb-2 text-right">
                             <input type="submit" class="btn btn-dark" value="Delete">
