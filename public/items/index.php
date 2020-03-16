@@ -21,8 +21,8 @@
                         <select class="custom-select" id="selected_item">
                             <?php
                                 while ($item_id = mysqli_fetch_row($item_ids)) {
-                                    echo '<option value="' . $item_id[0] . '">';
-                                    echo $item_id[0] . '</option>';
+                                    echo '<option value="' . h($item_id[0]) . '">';
+                                    echo h($item_id[0]) . '</option>';
                                 }                              
                             ?>
                         </select>
@@ -53,12 +53,12 @@
                         <tbody>
                             <?php while ($item = mysqli_fetch_assoc($items)) { ?>
                                 <tr>
-                                    <td>    <?php echo $item['item_id'];            ?></td>
-                                    <td>    <?php echo $item['item_name'];          ?></td>
-                                    <td>    <?php echo $item['item_description'];   ?></td>
-                                    <td>    <?php echo $item['quantity'];           ?></td>
-                                    <td>    <?php echo $item['added_by'];           ?></td>
-                                    <td>    <?php echo $item['added_date'];         ?></td>
+                                    <td>    <?php echo h($item['item_id']);            ?></td>
+                                    <td>    <?php echo h($item['item_name']);          ?></td>
+                                    <td>    <?php echo h($item['item_description']);   ?></td>
+                                    <td>    <?php echo h($item['quantity']);           ?></td>
+                                    <td>    <?php echo h($item['added_by']);           ?></td>
+                                    <td>    <?php echo h($item['added_date']);         ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
