@@ -83,4 +83,25 @@
         return $result;
     }
 
+    // Users
+    function find_all_users() {
+        global $db;
+
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+
+        return $result;
+    }
+    
+    function find_all_users_id() {
+        global $db;
+
+        $sql = "SELECT user_id FROM users ";
+        $sql .= "ORDER BY user_id ASC";
+        $result = mysqli_query($db, $sql); 
+
+        return $result;
+    }    
+
 ?>
