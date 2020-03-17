@@ -13,7 +13,7 @@ const el = {
 
     content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
 
-    // Test if current page is the login page
+    // If login form is present
     if (loginForm) {
         let loginMarginTop;
 
@@ -36,17 +36,19 @@ const el = {
 (function setItemsViewBtn() {
     let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
 
+    // If actions view button is present
     if (el.actionsViewBtn) {
         setViewBtnDefaultId();
         el.selectedId.addEventListener('click', handleChange);
 
+        // Set default id on views edit button
         function setViewBtnDefaultId() {
             handleHref();
-            // Set default href on edit button
             const newHref = el.actionsViewBtn.href + '?id=' + currentId;
             el.actionsViewBtn.setAttribute('href', newHref);            
         }
 
+        // Set the currently selected id
         function handleChange() {
             handleHref();
             // Get currently selected id
@@ -55,7 +57,8 @@ const el = {
             const newHref = el.actionsViewBtn.href + '?id=' + currentId;
             el.actionsViewBtn.setAttribute('href', newHref);
         }
-    
+        
+        // Remove trailing id parameters
         function handleHref() {
             const curHref = el.actionsViewBtn.href;
             // Find .php on href
