@@ -1,9 +1,8 @@
+// Global elements object
 const el = {
-    selectedId: document.getElementById('selected_id')
+    selectedId: document.getElementById('selected_id'),
+    actionsViewBtn: document.querySelector('#actions a[href*="view.php"]')
 };
-
-console.log(el.selectedId);
-
 
 // Set content height depending on current viewport
 (function setContentHeight() {
@@ -35,9 +34,8 @@ console.log(el.selectedId);
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
-    const actionsViewBtn = document.querySelector('#actions a[href*="view.php"]');
     
-    if (actionsViewBtn) {
+    if (el.actionsViewBtn) {
         el.selectedId.addEventListener('click', handleChange);
     
         function handleChange() {
@@ -45,17 +43,17 @@ console.log(el.selectedId);
             // Get currently selected id
             const currendId = el.selectedId.options[el.selectedId.selectedIndex].value;
             // Set new href on edit button
-            const newHref = actionsViewBtn.href + '?id=' + currendId;
-            actionsViewBtn.setAttribute('href', newHref);
+            const newHref = el.actionsViewBtn.href + '?id=' + currendId;
+            el.actionsViewBtn.setAttribute('href', newHref);
         }
     
         function handleHref() {
-            const curHref = actionsViewBtn.href;
+            const curHref = el.actionsViewBtn.href;
             // Find .php on href
             const findPhp = curHref.indexOf('.php');
             // Set new href on edit button
             const newHref = curHref.substr(0, findPhp + 4);
-            actionsViewBtn.setAttribute('href', newHref);
+            el.actionsViewBtn.setAttribute('href', newHref);
         }
     }
 })();
