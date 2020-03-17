@@ -1,20 +1,20 @@
 // Global elements object
 const el = {
     selectedId: document.getElementById('selected_id'),
-    actionsViewBtn: document.querySelector('#actions a[href*="view.php"]')
+    actionsViewBtn: document.querySelector('#actions a[href*="view.php"]'),
+    content: document.getElementById('content'),
+    loginForm: document.querySelector('#login form'),
 };
 
 // Set content height depending on current viewport
 (function setContentHeight() {
-    const content = document.getElementById('content');
-    const loginForm = document.querySelector('#login form');
     const windowInnerHeight = window.innerHeight;
     const curWindowHeight = parseInt(windowInnerHeight);
-
-    content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
+    
+    el.content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
 
     // If login form is present
-    if (loginForm) {
+    if (el.loginForm) {
         let loginMarginTop;
 
         // Set margin top of form base on current window height
@@ -26,8 +26,7 @@ const el = {
         
         // Convert to string for concatenation
         loginMarginTop = loginMarginTop.toString();
-        
-        loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
+        el.loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
     }
 
 })();
