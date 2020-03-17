@@ -41,9 +41,9 @@ const el = {
         function handleChange() {
             handleHref();
             // Get currently selected id
-            const currendId = el.selectedId.options[el.selectedId.selectedIndex].value;
+            const currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
             // Set new href on edit button
-            const newHref = el.actionsViewBtn.href + '?id=' + currendId;
+            const newHref = el.actionsViewBtn.href + '?id=' + currentId;
             el.actionsViewBtn.setAttribute('href', newHref);
         }
     
