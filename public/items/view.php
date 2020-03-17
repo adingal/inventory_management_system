@@ -17,7 +17,7 @@
 
 <div id="content">
 
-    <div id="edit_item" class="py-5">
+    <div id="view_item" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto">
