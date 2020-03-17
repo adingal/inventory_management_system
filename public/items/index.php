@@ -16,9 +16,9 @@
                 <div class="col-md-4 col-lg-3 mb-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="selected_item">Item ID</label>
+                            <label class="input-group-text" for="selected_id">Item ID</label>
                         </div>
-                        <select class="custom-select" id="selected_item">
+                        <select class="custom-select" id="selected_id">
                             <?php
                                 while ($item_id = mysqli_fetch_row($item_ids)) {
                                     echo '<option value="' . h($item_id[0]) . '">';

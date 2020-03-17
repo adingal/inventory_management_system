@@ -1,3 +1,10 @@
+const el = {
+    selectedId: document.getElementById('selected_id')
+};
+
+console.log(el.selectedId);
+
+
 // Set content height depending on current viewport
 (function setContentHeight() {
     const content = document.getElementById('content');
@@ -28,18 +35,17 @@
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
-    const selectedItem = document.getElementById('selected_item');
     const actionsViewBtn = document.querySelector('#actions a[href*="view.php"]');
     
     if (actionsViewBtn) {
-        selectedItem.addEventListener('click', handleChange);
+        el.selectedId.addEventListener('click', handleChange);
     
         function handleChange() {
             handleHref();
             // Get currently selected id
-            const selectedID = selectedItem.options[selectedItem.selectedIndex].value;
+            const currendId = el.selectedId.options[el.selectedId.selectedIndex].value;
             // Set new href on edit button
-            const newHref = actionsViewBtn.href + '?id=' + selectedID;
+            const newHref = actionsViewBtn.href + '?id=' + currendId;
             actionsViewBtn.setAttribute('href', newHref);
         }
     
