@@ -14,7 +14,8 @@ body {
 #actions label {
     min-width: 150px;}
 
-#view_item .btn {
+#view_item .btn,
+#view_user .btn {
     min-width: 82px;}
     
 @media (max-width: 768px) {
