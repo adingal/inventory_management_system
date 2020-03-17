@@ -34,14 +34,23 @@ const el = {
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
-    
+    let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
+
     if (el.actionsViewBtn) {
+        setViewBtnDefaultId();
         el.selectedId.addEventListener('click', handleChange);
-    
+
+        function setViewBtnDefaultId() {
+            handleHref();
+            // Set default href on edit button
+            const newHref = el.actionsViewBtn.href + '?id=' + currentId;
+            el.actionsViewBtn.setAttribute('href', newHref);            
+        }
+
         function handleChange() {
             handleHref();
             // Get currently selected id
-            const currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
+            currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
             // Set new href on edit button
             const newHref = el.actionsViewBtn.href + '?id=' + currentId;
             el.actionsViewBtn.setAttribute('href', newHref);
