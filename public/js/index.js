@@ -3,14 +3,14 @@ const el = {
     selectedId: document.getElementById('selected_id'),
     actionsViewBtn: document.querySelector('#actions a[href*="view.php"]'),
     content: document.getElementById('content'),
-    loginForm: document.querySelector('#login form'),
+    loginForm: document.querySelector('#login form')
 };
 
 // Set content height depending on current viewport
 (function setContentHeight() {
     const windowInnerHeight = window.innerHeight;
     const curWindowHeight = parseInt(windowInnerHeight);
-    
+
     el.content.setAttribute('style', 'min-height: ' + (curWindowHeight - 56) + 'px');
 
     // If login form is present
