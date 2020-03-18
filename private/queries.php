@@ -123,8 +123,8 @@
         global $db;
 
         $sql = "UPDATE users SET ";
-        $sql .= "first_name = '" . db_escape($db, $user['first_name']) . "' ";
-        $sql .= "last_name = '" . db_escape($db, $user['last_name']) . "' ";
+        $sql .= "first_name = '" . db_escape($db, $user['first_name']) . "', ";
+        $sql .= "last_name = '" . db_escape($db, $user['last_name']) . "', ";
         $sql .= "email = '" . db_escape($db, $user['email']) . "' ";
         $sql .= "WHERE user_id = '" . db_escape($db, $user['user_id']) . "' ";
         $sql .= "LIMIT 1";
