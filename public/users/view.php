@@ -39,8 +39,8 @@
                             <input type="text" class="form-control" name="registered_date" value="<?php echo h($formatted_date); ?>" disabled>
                         </div>
                         <div class="form-group text-right">
-                            <a href="<?php echo url_for('/users/edit.php' . h(u($id))); ?>" class="btn btn-dark">Edit</a>
-                            <a href="<?php echo url_for('/users/delete.php' . h(u($id))); ?>" class="btn btn-dark">Delete</a>
+                            <a href="<?php echo url_for('/users/edit.php?id=' . h(u($id))); ?>" class="btn btn-dark">Edit</a>
+                            <a href="<?php echo url_for('/users/delete.php?id=' . h(u($id))); ?>" class="btn btn-dark">Delete</a>
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
