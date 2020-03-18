@@ -1,14 +1,28 @@
 <?php
     require_once('../../private/init.php');
 
+    $page_title = 'Edit User';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
         redirect_to(url_for('/users/index.php'));
+    } elseif (is_post()) {
+        $user = [];
+        $user['user_id'] = $id;
+        $user['first_name'] = $_POST['first_name'] ?? '';
+        $user['last_name'] = $_POST['last_name'] ?? '';
+        $user['email'] = $_POST['email'] ?? '';
+
+        $result = update_user($user);
+
+        if ($result) {
+          redirect_to(url_for('/users/index.php'));  
+        }
     }
 
     $user = find_user_by_id($id);
-    $formatted_date = date_format(date_create($item['registered_date']), 'M d, Y');
+    $formatted_date = date_format(date_create($user['registered_date']), 'M d, Y');
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
