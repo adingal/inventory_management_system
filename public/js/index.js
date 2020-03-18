@@ -33,10 +33,10 @@ const el = {
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
-    let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
-
+    
     // If actions view button is present
     if (el.actionsViewBtn) {
+        let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
         setViewBtnDefaultId();
         el.selectedId.addEventListener('click', handleChange);
 
