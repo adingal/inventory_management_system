@@ -2,6 +2,21 @@
     require_once('../../private/init.php');
 
     $page_title = 'Add User';
+
+    if (is_post()) {
+        $user = [];
+        $user['first_name'] = $_POST['first_name'] ?? '';
+        $user['last_name'] = $_POST['last_name'] ?? '';
+        $user['email'] = $_POST['email'] ?? '';
+        $user['hashed_password'] = $_POST['password'] ?? '';
+        $user['confirm_password'] = $_POST['confirm_password'] ?? '';
+
+        $result = insert_user($user);
+
+        if ($result) {
+            redirect_to(url_for('/users/index.php'));
+        }
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -12,7 +27,7 @@
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <h1 class="display-5">Add user...</h1>
-                    <form action="<?php echo url_for('/users/add.php?id=' . h(u($id))); ?>" method="post">
+                    <form action="<?php echo url_for('/users/add.php'); ?>" method="post">
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <input type="text" class="form-control" name="first_name">
@@ -31,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
-                            <input type="confirm_password" class="form-control" name="confirm_password">
+                            <input type="password" class="form-control" name="confirm_password">
                         </div>
                         <div class="form-group text-right">
                             <input type="submit" class="btn btn-dark" value="Add">
