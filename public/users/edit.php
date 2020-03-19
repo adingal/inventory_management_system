@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
+                            <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
                         </div>
                         <div class="form-group">
                             <label for="registered_date">Registered Date</label>
