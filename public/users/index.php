@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-lg-9 text-center text-md-right">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+                    <a href="<?php echo url_for('/users/add.php'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                     <a href="<?php echo url_for('/users/view.php?id=1'); ?>" class="btn btn-success"><i class="far fa-eye"></i> View</a>
                 </div>
             </div>
