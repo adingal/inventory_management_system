@@ -37,7 +37,7 @@
         return $item;
     }
 
-    function insert_items($item) {
+    function insert_item($item) {
         global $db;
 
         $sql = "INSERT INTO items ";
