@@ -10,7 +10,7 @@
         $item['quantity'] = $_POST['quantity'];
         $item['added_by'] = $_POST['added_by'];
 
-        $result = insert_items($item);
+        $result = insert_item($item);
 
         if ($result) {
             redirect_to(url_for('/items/index.php'));
