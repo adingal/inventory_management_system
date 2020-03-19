@@ -119,6 +119,25 @@
         return $user;
     }
 
+    function insert_user($user) {
+        global $db;
+
+        $sql = "INSERT INTO users ";
+        $sql .= "(first_name, last_name, email, hashed_password, registered_date) ";
+        $sql .= "VALUES ";
+        $sql .= "(";
+        $sql .= "'" . db_escape($db, $user['first_name']) . "', ";
+        $sql .= "'" . db_escape($db, $user['last_name']) . "', ";
+        $sql .= "'" . db_escape($db, $user['email']) . "', ";
+        $sql .= "'" . db_escape($db, $user['hashed_password']) . "', ";
+        $sql .= "NOW()";
+        $sql .= ")";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
     function update_user($user) {
         global $db;
 
