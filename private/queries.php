@@ -153,4 +153,16 @@
         return $result;
     }
 
+    function delete_user($id) {
+        global $db;
+
+        $sql = "DELETE FROM users ";
+        $sql .= "WHERE user_id = '" . db_escape($db, $id) . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
 ?>
