@@ -165,4 +165,15 @@
         return $result;
     }
 
+    // Transactions
+    function find_all_transactions() {
+        global $db;
+
+        $sql = "SELECT * FROM transactions";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
 ?>
