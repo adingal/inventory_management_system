@@ -2,6 +2,8 @@
     require_once('../../private/init.php');
 
     $page_title = 'Transactions';
+
+    $transactions = find_all_transactions();
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
