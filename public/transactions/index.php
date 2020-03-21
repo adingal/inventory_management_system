@@ -46,30 +46,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>6</td>
-                                <td>5</td>
-                                <td>March 7, 2020</td>
-                                <td>Use for maintenance.</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>4</td>
-                                <td>6</td>
-                                <td>March 18, 2020</td>
-                                <td>Repair loader.</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>12</td>
-                                <td>May 14, 2020</td>                            
-                                <td>Use for PM.</td>
-                            </tr>
+                            <?php while ($transaction = mysqli_fetch_assoc($transactions)) { ?>
+                                <tr>
+                                    <td><?php echo h($transaction['transaction_id']); ?></td>
+                                    <td><?php echo h($transaction['user_id']); ?></td>
+                                    <td><?php echo h($transaction['item_id']); ?></td>
+                                    <td><?php echo h($transaction['withdrawn_quantity']); ?></td>
+                                    <td><?php echo h($transaction['transaction_date']); ?></td>
+                                    <td><?php echo h($transaction['remarks']); ?></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
