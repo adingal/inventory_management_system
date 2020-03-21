@@ -69,4 +69,5 @@
     </div>
 </div>
 
+<?php mysqli_free_result($items); ?>
 <?php include(SHARED_PATH . '/main_footer.php'); ?>
