@@ -48,10 +48,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($transaction = mysqli_fetch_assoc($transactions)) { ?>
+                            <?php 
+                                while ($transaction = mysqli_fetch_assoc($transactions)) {
+                                
+                                // Find user and replace user_id to their names
+                                $user = find_user_by_id($transaction['user_id']);
+                                $user_name = $user['first_name'] . ' ' . $user['last_name'];
+                            ?>
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
-                                    <td><?php echo h($transaction['user_id']); ?></td>
+                                    <td><?php echo h($user_name); ?></td>
                                     <td><?php echo h($transaction['item_id']); ?></td>
                                     <td><?php echo h($transaction['withdrawn_quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_date']); ?></td>
