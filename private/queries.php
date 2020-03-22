@@ -176,4 +176,14 @@
         return $result;
     }
 
+    function find_all_transactions_id() {
+        global $db;
+
+        $sql = "SELECT transaction_id FROM transactions ";
+        $sql .= "ORDER BY transaction_id ASC";        
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
 ?>
