@@ -4,6 +4,7 @@
     $page_title = 'Transactions';
 
     $transactions = find_all_transactions();
+    $transaction_ids = find_all_transactions_id();
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -12,22 +13,24 @@
     <div id="actions" class="pt-5 pb-2 mt-3">
         <div class="container">
             <div class="row">
-                <div id="id_options" class="col-md-4 mb-2">
+                <div id="id_options" class="col-md-4 col-lg-3 mb-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="selected_item">Transaction ID</label>
                         </div>
-                        <select class="custom-select" id="selected_item">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <select class="custom-select" id="selected_id">
+                            <?php
+                                while ($transaction_id = mysqli_fetch_row($$transaction_ids)) {
+                                    echo '<option value="' . h($transaction_id[0]) . '">';
+                                    echo h($transaction[0]) . '</option>';
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-8 text-center text-md-right">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                <div class="col-md-8 col-lg-9 text-center text-md-right">
+                    <a href="<?php echo url_for('/transactions/add.php'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+                    <a href="<?php echo url_for('/transactions/view.php'); ?>" class="btn btn-success"><i class="far fa-eye"></i> View</a>
                 </div>
             </div>
         </div>
