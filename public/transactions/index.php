@@ -43,8 +43,8 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>Transaction ID</th>
-                                <th>User ID</th>
-                                <th>Item ID</th>
+                                <th>User Name</th>
+                                <th>Item Name</th>
                                 <th>Withdrawn Quantity</th>
                                 <th>Transaction Date</th>
                                 <th>Remarks</th>
