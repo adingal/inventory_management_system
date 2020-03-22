@@ -20,9 +20,9 @@
                         </div>
                         <select class="custom-select" id="selected_id">
                             <?php
-                                while ($transaction_id = mysqli_fetch_row($$transaction_ids)) {
+                                while ($transaction_id = mysqli_fetch_row($transaction_ids)) {
                                     echo '<option value="' . h($transaction_id[0]) . '">';
-                                    echo h($transaction[0]) . '</option>';
+                                    echo h($transaction_id[0]) . '</option>';
                                 }
                             ?>
                         </select>
