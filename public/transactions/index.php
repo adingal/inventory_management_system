@@ -54,11 +54,15 @@
                                 // Find user and replace user_id to their names
                                 $user = find_user_by_id($transaction['user_id']);
                                 $user_name = $user['first_name'] . ' ' . $user['last_name'];
+
+                                // Find item and replace item_id to their names
+                                $item = find_item_by_id($transaction['item_id']);
+                                $item_name = $item['item_name'];
                             ?>
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
                                     <td><?php echo h($user_name); ?></td>
-                                    <td><?php echo h($transaction['item_id']); ?></td>
+                                    <td><?php echo h($item_name); ?></td>
                                     <td><?php echo h($transaction['withdrawn_quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_date']); ?></td>
                                     <td><?php echo h($transaction['remarks']); ?></td>
