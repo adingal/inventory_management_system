@@ -10,6 +10,12 @@
     }
 
     $transaction = find_transaction_by_id($id);
+
+    // Find user and replace user_id to their names
+    $user = find_user_by_id($transaction['user_id']);
+
+    // Find item and replace item_id to their names
+    $item = find_item_by_id($transaction['item_id']);
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -22,11 +28,11 @@
                     <h1 class="display-5">Edit trans...</h1>
                     <div class="form-group">
                         <label for="user_name">User Name</label>
-                        <input type="text" class="form-control" name="user_name" value="<?php echo h($transaction['user_id']); ?>" disabled>
+                        <input type="text" class="form-control" name="user_name" value="<?php echo h($user['first_name'] . ' ' . $user['last_name']); ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="item_name">Item Name</label>
-                        <input type="text" class="form-control" name="item_name" value="<?php echo h($transaction['item_id']); ?>" disabled>
+                        <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
