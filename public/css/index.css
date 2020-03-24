@@ -16,7 +16,10 @@ body {
 
 #view_item .btn,
 #view_user .btn,
-#view_transaction .btn {
+#view_transaction .btn,
+#edit_item .btn,
+#edit_user .btn,
+#edit_transaction .btn {
     min-width: 82px;}
     
 @media (max-width: 768px) {
