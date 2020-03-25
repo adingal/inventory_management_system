@@ -201,4 +201,16 @@
         return $transaction;
     }
 
+    function delete_transaction($id) {
+        global $db;
+
+        $sql = "DELETE FROM transactions ";
+        $sql .= "WHERE transaction_id = '" . db_escape($db, $id) . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+
+        return $result;
+    }
+
 ?>
