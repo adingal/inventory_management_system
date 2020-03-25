@@ -44,7 +44,7 @@
                         <input type="number" class="form-control" name="quantity" value="<?php echo h($transaction['withdrawn_quantity']); ?>" disabled>
                     </div>
                     <div class="form-group text-right">
-                        <input type="submit" class="btn btn-dark">
+                        <input type="submit" class="btn btn-dark" value="Delete">
                         <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-dark">Cancel</a>
                     </div>                    
                 </div>
