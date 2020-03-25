@@ -18,6 +18,9 @@
     }
 
     $transaction = find_transaction_by_id($id);
+
+    // Find item and replace item_id to their names
+    $item = find_item_by_id($transaction['item_id']);    
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -34,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="item_name">Item Name</label>
-                        <input type="text" class="form-control" name="item_name" value="<?php echo h($transaction['item_id']); ?>" disabled>
+                        <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
