@@ -9,6 +9,14 @@
         redirect_to(url_for('/transactions/index.php'));
     }
 
+    if (is_post()) {
+        $result = delete_transaction($id);
+
+        if ($result) {
+            redirect_to(url_for('/transactions/index.php'));
+        }
+    }
+
     $transaction = find_transaction_by_id($id);
 ?>
 
@@ -31,6 +39,10 @@
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
                         <input type="number" class="form-control" name="quantity" value="<?php echo h($transaction['withdrawn_quantity']); ?>" disabled>
+                    </div>
+                    <div class="form-group text-right">
+                        <input type="submit" class="btn btn-dark">
+                        <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-dark">Cancel</a>
                     </div>                    
                 </div>
             </div>
