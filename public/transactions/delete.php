@@ -30,23 +30,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <h1 class="display-5">Delete trans...</h1>
-                    <div class="form-group">
-                        <label for="transaction_id">Transaction ID</label>
-                        <input type="text" class="form-control" name="transaction_id" value="<?php echo h($transaction['transaction_id']); ?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="item_name">Item Name</label>
-                        <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" class="form-control" name="quantity" value="<?php echo h($transaction['withdrawn_quantity']); ?>" disabled>
-                    </div>
-                    <div class="form-group text-right">
-                        <input type="submit" class="btn btn-dark" value="Delete">
-                        <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-dark">Cancel</a>
-                    </div>                    
+                    <form action="<?php echo url_for('/transactions/delete.php?id=' . h(u($id))); ?>" method="post">
+                        <h1 class="display-5">Delete trans...</h1>
+                        <div class="form-group">
+                            <label for="transaction_id">Transaction ID</label>
+                            <input type="text" class="form-control" name="transaction_id" value="<?php echo h($transaction['transaction_id']); ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_name">Item Name</label>
+                            <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" class="form-control" name="quantity" value="<?php echo h($transaction['withdrawn_quantity']); ?>" disabled>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="submit" class="btn btn-dark" value="Delete">
+                            <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-dark">Cancel</a>
+                        </div>
+                    </form>                    
                 </div>
             </div>
         </div>
