@@ -86,7 +86,7 @@
     function item_count() {
         global $db;
 
-        $sql = "SELECT COUNT(item_id) FROM items";
+        $sql = "SELECT item_id FROM items";
 
         $result = mysqli_query($db, $sql);
         $item_count = mysqli_num_rows($result);

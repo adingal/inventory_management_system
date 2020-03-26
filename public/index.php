@@ -2,6 +2,10 @@
     require_once('../private/init.php');
 
     $page_title = 'Inventory Management System';
+
+    $item_count = item_count();
+
+    echo $item_count;
 ?>
 
 <?php include('../private/shared_items/main_header.php'); ?>
