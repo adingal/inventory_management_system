@@ -8,6 +8,9 @@ body {
 #main-header {
     min-height: 80px;}
 
+#home h1 {
+    border-bottom: 8px double #ddd;}
+
 #actions a {
     min-width: 90px;}
 
@@ -24,5 +27,5 @@ body {
     
 @media (max-width: 768px) {
     #actions a {
-        width: 49%;}    
+        width: 49%;}   
 }
