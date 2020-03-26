@@ -237,4 +237,16 @@
         return $result;
     }
 
+    function transaction_count() {
+        global $db;
+
+        $sql = "SELECT transaction_id FROM transactions";
+
+        $result = mysqli_query($db, $sql);
+        $transaction_count = mysqli_num_rows($result);
+        mysqli_free_result($result);
+
+        return $transaction_count;
+    }     
+
 ?>

@@ -4,8 +4,8 @@
     $page_title = 'Inventory Management System';
 
     $item_count = item_count();
-
     $user_count = user_count();
+    $transaction_count = transaction_count();
 ?>
 
 <?php include('../private/shared_items/main_header.php'); ?>
@@ -56,7 +56,7 @@
                                     <h3 class="display-4">
                                         <i class="far fa-edit"></i>
                                     </h3>
-                                    <h4>98</h4>
+                                    <h4><?php echo h($transaction_count); ?></h4>
                                     <a href="" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
