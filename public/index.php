@@ -47,7 +47,7 @@
                         <div class="col-md-4">
                             <div class="card bg-success text-center text-white mb-3">
                                 <div class="card-body">
-                                    <h2 class="display-5">Transactions</h2>
+                                    <h2 class="display-5 text-truncate">Transactions</h2>
                                     <h3 class="display-4">
                                         <i class="far fa-edit"></i>
                                     </h3>
