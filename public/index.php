@@ -40,7 +40,8 @@
                                     <h3 class="display-4">
                                         <i class="fas fa-boxes"></i>
                                     </h3>
-                                    <a href="" class="btn btn-outline-light btn-sm">View</a>
+                                    <h4>98</h4>
+                                    <a href="" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +52,8 @@
                                     <h3 class="display-4">
                                         <i class="far fa-edit"></i>
                                     </h3>
-                                    <a href="" class="btn btn-outline-light btn-sm">View</a>
+                                    <h4>98</h4>
+                                    <a href="" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +64,8 @@
                                     <h3 class="display-4">
                                         <i class="fa fa-user"></i>
                                     </h3>
-                                    <a href="" class="btn btn-outline-light btn-sm">View</a>
+                                    <h4>98</h4>
+                                    <a href="" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
