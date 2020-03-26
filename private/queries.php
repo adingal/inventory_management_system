@@ -177,6 +177,18 @@
         return $result;
     }
 
+    function user_count() {
+        global $db;
+
+        $sql = "SELECT user_id FROM users";
+
+        $result = mysqli_query($db, $sql);
+        $user_count = mysqli_num_rows($result);
+        mysqli_free_result($result);
+
+        return $user_count;
+    }    
+
     // Transactions
     function find_all_transactions() {
         global $db;
