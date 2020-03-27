@@ -95,6 +95,17 @@
         return $item_count;
     }
 
+    function validate_item($item) {
+        $errors = [];        
+
+        // Item name
+        $current_id = $item['item_id'] ?? '0';
+        if (!has_unique_item_name($item['item_name'], $current_id)) {
+            $errors['item_name'] = 'Item name already in used.';
+        }
+        
+    }
+
     // Users
     function find_all_users() {
         global $db;
