@@ -20,4 +20,18 @@
         return $length < $max;
     }
 
+    function has_unique_item_name($item_name, $item_id="0") {
+        global $db;
+
+        $sql = "SELECT * FROM items ";
+        $sql .= "WHERE item_name = '" . db_escape($db, $item_name) . "' ";
+        $sql .= "AND item_id != '" . db_escape($db, $item_id) . "'";
+
+        $item_set = mysqli_query($db, $sql);
+        $item_count = mysqli_num_rows($item_set);
+        mysqli_free_result($item_set);
+
+        return $item_count === 0;
+    }
+    
 ?>
