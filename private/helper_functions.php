@@ -25,4 +25,11 @@
         return htmlspecialchars($string);
     }
 
+    function to_lowercase($string="") {
+        return strtolower($string);
+    }
+
+    function to_uppercase($string="") {
+        return strtoupper($string);
+    }
 ?>
