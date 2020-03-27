@@ -40,6 +40,12 @@
     function insert_item($item) {
         global $db;
 
+        $errors = validate_item($item);
+
+        if (!empty($errors)) {
+            return $errors;
+        }
+
         $sql = "INSERT INTO items ";
         $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
         $sql .= "VALUES ";
@@ -103,7 +109,12 @@
         if (!has_unique_item_name($item['item_name'], $current_id)) {
             $errors['item_name'] = 'Item name already in used.';
         }
-        
+
+        if (!has_length_greater_than($item['item_name'], 6)) {
+            $errors['item_min'] = 'Please enter a minimum of 6 characters.';
+        }
+
+        return $errors;
     }
 
     // Users

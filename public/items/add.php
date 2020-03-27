@@ -12,8 +12,10 @@
 
         $result = insert_item($item);
 
-        if ($result) {
+        if ($result === true) {
             redirect_to(url_for('/items/index.php'));
+        } else {
+            $errors = $result;
         }
     }
 ?>
@@ -30,6 +32,15 @@
                         <div class="form-group mb-2">
                             <label for="item_name">Item Name</label>
                             <input type="text" class="form-control" name="item_name">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['item_name'] ?? '') {
+                                        echo $errors['item_name'];
+                                    } else if ($errors['item_min'] ?? '') {
+                                        echo $errors['item_min'];
+                                    }
+                                ?>
+                            </small>
                         </div>
                         <div class="form-group mb-2">
                             <label for="description">Description</label>
