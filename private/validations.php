@@ -8,14 +8,14 @@
 
     // Test whether given value pass the minimum character length
     // Returns boolean
-    function has_length_greater($value, $min) {
+    function has_length_greater_than($value, $min) {
         $length = strlen(trim($value));
         return $length > $min;
     }
 
     // Test whether given value does not exceed the maximum character length
     // Returns boolean    
-    function has_length_less($value, $max) {
+    function has_length_less_than($value, $max) {
         $length = strlen(trim($value));
         return $length < $max;
     }
