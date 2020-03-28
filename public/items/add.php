@@ -17,6 +17,12 @@
         } else {
             $errors = $result;
         }
+    } else {
+        $item = [];
+        $item['item_name'] = '';
+        $item['item_description'] = '';
+        $item['quantity'] = '';
+        $item['added_by'] = '';        
     }
 ?>
 
@@ -31,7 +37,7 @@
                         <h1 class="display-5">Add new item...</h1>
                         <div class="form-group mb-2">
                             <label for="item_name">Item Name</label>
-                            <input type="text" class="form-control" name="item_name">
+                            <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']);?>">
                             <small class="text-danger">
                                 <?php
                                     if ($errors['item_name'] ?? '') {
@@ -44,15 +50,15 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="description">Description</label>
-                            <textarea class="form-control" name="description" cols="30" rows="5"></textarea>
+                            <textarea class="form-control" name="description" cols="30" rows="5"><?php echo h($item['item_description']);?></textarea>
                         </div>
                         <div class="form-group mb-2">
                             <label for="quantity">Quantity</label>
-                            <input type="number" class="form-control" name="quantity" min="1" max="100">
+                            <input type="number" class="form-control" name="quantity" min="1" max="100" value="<?php echo h($item['quantity']);?>">
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_by">Added By</label>
-                            <input type="text" class="form-control" name="added_by">
+                            <input type="text" class="form-control" name="added_by" value="<?php echo h($item['added_by']);?>">
                         </div>
                         <div class="form-group mb-2 text-right">
                             <input type="submit" class="btn btn-dark" value="Add">
