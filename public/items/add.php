@@ -44,6 +44,8 @@
                                         echo $errors['item_name'];
                                     } else if ($errors['item_min'] ?? '') {
                                         echo $errors['item_min'];
+                                    } else if ($errors['item_max'] ?? '') {
+                                        echo $errors['item_max'];
                                     }
                                 ?>
                             </small>

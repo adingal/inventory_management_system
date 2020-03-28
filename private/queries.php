@@ -104,16 +104,23 @@
     function validate_item($item) {
         $errors = [];        
 
-        // Item name
+        # Item name
+        // Check whether item name is not in used
         $current_id = $item['item_id'] ?? '0';
         if (!has_unique_item_name($item['item_name'], $current_id)) {
             $errors['item_name'] = 'Item name already in used.';
         }
-
+        
+        // Check for minimum length of characters
         if (!has_length_greater_than($item['item_name'], 6)) {
             $errors['item_min'] = 'Please enter a minimum of 6 characters.';
         }
 
+        // Check for maximum length of characters
+        if (!has_length_less_than($item['item_name'], 11)) {
+            $errors['item_max'] = 'Please enter a maximum of 10 characters only.';
+        }
+        
         return $errors;
     }
 
