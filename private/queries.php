@@ -120,7 +120,18 @@
         if (!has_length_less_than($item['item_name'], 11)) {
             $errors['item_max'] = 'Please enter a maximum of 10 characters only.';
         }
-        
+
+        # Item description
+        // Check for minimum length of characters
+        if (!has_length_greater_than($item['item_description'], 10)) {
+            $errors['description_min'] = 'Please enter a minimum of 10 characters.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($item['item_description'], 101)) {
+            $errors['description_max'] = 'Please enter a maximum of 100 characters only.';
+        }        
+
         return $errors;
     }
 

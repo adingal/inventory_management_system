@@ -53,6 +53,15 @@
                         <div class="form-group mb-2">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" cols="30" rows="5"><?php echo h($item['item_description']);?></textarea>
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['description_max'] ?? '') {
+                                        echo $errors['description_max'];
+                                    } else if ($errors['description_min'] ?? '') {
+                                        echo $errors['description_min'];
+                                    }
+                                ?>
+                            </small>                            
                         </div>
                         <div class="form-group mb-2">
                             <label for="quantity">Quantity</label>
