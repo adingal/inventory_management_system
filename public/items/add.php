@@ -66,6 +66,13 @@
                         <div class="form-group mb-2">
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity" min="1" max="100" value="<?php echo h($item['quantity']);?>">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['quantity'] ?? '') {
+                                        echo $errors['quantity'];
+                                    }
+                                ?>
+                            </small>                            
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_by">Added By</label>

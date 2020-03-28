@@ -130,7 +130,13 @@
         // Check for maximum length of characters
         if (!has_length_less_than($item['item_description'], 101)) {
             $errors['description_max'] = 'Please enter a maximum of 100 characters only.';
-        }        
+        }
+        
+        # Quantity
+        // Check for quantity value if present
+        if (is_blank($item['quantity'])) {
+            $errors['quantity'] = 'Please enter a quantity.';
+        }
 
         return $errors;
     }
