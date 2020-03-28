@@ -65,6 +65,12 @@
     function update_item($item) {
         global $db;
 
+        $errors = validate_item($item);
+
+        if (!empty($errors)) {
+            return $errors;
+        }        
+
         $sql = "UPDATE items SET ";
         $sql .= "item_name = '" . db_escape($db, $item['item_name']) . "', ";
         $sql .= "item_description = '" . db_escape($db, $item['item_description']) . "', ";
