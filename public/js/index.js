@@ -6,8 +6,8 @@ const el = {
     loginForm: document.querySelector('#login form')
 };
 
-// Set content height depending on current viewport
-(function setContentHeight() {
+/* Set content height depending on current viewport
+function setContentHeight() {
     const windowInnerHeight = window.innerHeight;
     const curWindowHeight = parseInt(windowInnerHeight);
 
@@ -29,7 +29,7 @@ const el = {
         el.loginForm.setAttribute('style', 'margin-top: ' + loginMarginTop + 'px');
     }
 
-})();
+}; */
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
