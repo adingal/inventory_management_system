@@ -38,5 +38,7 @@ body {
     
 @media (max-width: 768px) {
     #actions a {
-        width: 49%;}   
+        width: 49%;}
+    #actions .btn-secondary {
+        margin-top: 8px;}   
 }
