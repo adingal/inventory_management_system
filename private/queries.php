@@ -186,6 +186,12 @@
     function insert_user($user) {
         global $db;
 
+        $errors = validate_user($user);
+
+        if (!empty($errors)) {
+            return $errors;
+        }
+
         $sql = "INSERT INTO users ";
         $sql .= "(first_name, last_name, email, hashed_password, registered_date) ";
         $sql .= "VALUES ";
@@ -239,7 +245,67 @@
         mysqli_free_result($result);
 
         return $user_count;
-    }    
+    }
+    
+    function validate_user($user) {
+        $errors = [];
+
+        # First name
+        // Check for minimum length of characters
+        if (!has_length_greater_than($user['first_name'], 1)) {
+            $errors['first_name_min'] = 'Please enter a minimum of 2 characters.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($user['first_name'], 50)) {
+            $errors['first_name_max'] = 'Please enter a maximum of 50 characters only.';
+        }
+
+        # Last name
+        // Check for minimum length of characters
+        if (!has_length_greater_than($user['last_name'], 1)) {
+            $errors['last_name_min'] = 'Please enter a minimum of 2 characters.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($user['last_name'], 50)) {
+            $errors['last_name_max'] = 'Please enter a maximum of 50 characters only.';
+        }
+
+        # Email
+        // Check for minimum length of characters
+        if (!has_length_greater_than($user['email'], 1)) {
+            $errors['email_min'] = 'Email required.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($user['email'], 50)) {
+            $errors['email_max'] = 'Please enter a maximum of 50 characters only.';
+        }        
+
+        // Check for minimum length of characters
+        if (!has_valid_email_format($user['email'])) {
+            $errors['email_valid'] = 'Please enter a valid email format.';
+        }
+
+        # Password
+        // Check for minimum length of characters
+        if (!has_length_greater_than($user['password'], 7)) {
+            $errors['password_min'] = 'Please enter a minimum of 8 characters.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($user['password'], 50)) {
+            $errors['password_max'] = 'Please enter a maximum of 20 characters only.';
+        }
+
+        // Check if password and confirm password matches
+        if ($user['password'] !== $user['confirm_password']) {
+            $errors['password_confirm'] = 'Password and confirm password does not match.';
+        }
+         
+        return $errors;
+    }
 
     // Transactions
     function find_all_transactions() {
