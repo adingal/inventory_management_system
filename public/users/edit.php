@@ -47,6 +47,14 @@
                             <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" class="form-control" name="confirm_password">
+                        </div>
+                        <div class="form-group">
                             <label for="registered_date">Registered Date</label>
                             <input type="text" class="form-control" name="registered_date" value="<?php echo h($formatted_date); ?>" disabled>
                         </div>
