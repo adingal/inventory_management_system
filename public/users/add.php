@@ -42,10 +42,10 @@
                             <input type="text" class="form-control" name="first_name" value="<?php echo h($user['first_name']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['first_name_min'] ?? '') {
-                                        echo $errors['first_name_min'];
-                                    } else if ($errors['first_name_max'] ?? '') {
-                                        echo $errors['first_name_max'];
+                                    if ($errors['first_name_blank'] ?? '') {
+                                        echo $errors['first_name_blank'];
+                                    } else if ($errors['first_name_length'] ?? '') {
+                                        echo $errors['first_name_length'];
                                     }                                   
                                 ?>
                             </small>
@@ -55,10 +55,10 @@
                             <input type="text" class="form-control" name="last_name" value="<?php echo h($user['last_name']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['last_name_min'] ?? '') {
-                                        echo $errors['last_name_min'];
-                                    } else if ($errors['last_name_max'] ?? '') {
-                                        echo $errors['last_name_max'];
+                                    if ($errors['last_name_blank'] ?? '') {
+                                        echo $errors['last_name_blank'];
+                                    } else if ($errors['last_name_length'] ?? '') {
+                                        echo $errors['last_name_length'];
                                     }                                   
                                 ?>
                             </small>                            
@@ -68,10 +68,10 @@
                             <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['email_min'] ?? '') {
-                                        echo $errors['email_min'];
-                                    } else if ($errors['email_max'] ?? '') {
-                                        echo $errors['email_max'];
+                                    if ($errors['email_blank'] ?? '') {
+                                        echo $errors['email_blank'];
+                                    } else if ($errors['email_length'] ?? '') {
+                                        echo $errors['email_length'];
                                     } else if ($errors['email_valid'] ?? '') {
                                         echo $errors['email_valid'];
                                     }         
@@ -83,10 +83,10 @@
                             <input type="password" class="form-control" name="password" value="<?php echo h($user['password']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['password_min'] ?? '') {
-                                        echo $errors['password_min'];
-                                    } else if ($errors['password_max'] ?? '') {
-                                        echo $errors['password_max'];
+                                    if ($errors['password_blank'] ?? '') {
+                                        echo $errors['password_blank'];
+                                    } else if ($errors['password_length'] ?? '') {
+                                        echo $errors['password_length'];
                                     }         
                                 ?>
                             </small>                               
@@ -96,11 +96,7 @@
                             <input type="password" class="form-control" name="confirm_password" value="<?php echo h($user['confirm_password']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['confirm_password_min'] ?? '') {
-                                        echo $errors['confirm_password_min'];
-                                    } else if ($errors['confirm_password_max'] ?? '') {
-                                        echo $errors['confirm_password_max'];
-                                    } else if ($errors['password_confirm'] ?? '') {
+                                    if ($errors['password_confirm'] ?? '') {
                                         echo $errors['password_confirm'];
                                     }
                                 ?>

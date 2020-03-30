@@ -13,11 +13,15 @@
         $user['first_name'] = $_POST['first_name'] ?? '';
         $user['last_name'] = $_POST['last_name'] ?? '';
         $user['email'] = $_POST['email'] ?? '';
+        $user['password'] = $_POST['password'] ?? '';
+        $user['confirm_password'] = $_POST['confirm_password'] ?? '';
 
         $result = update_user($user);
 
-        if ($result) {
+        if ($result === true) {
           redirect_to(url_for('/users/index.php'));  
+        } else {
+            $errors = $result;
         }
     }
 
@@ -37,14 +41,43 @@
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <input type="text" class="form-control" name="first_name" value="<?php echo h($user['first_name']); ?>">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['first_name_min'] ?? '') {
+                                        echo $errors['first_name_min'];
+                                    } else if ($errors['first_name_max'] ?? '') {
+                                        echo $errors['first_name_max'];
+                                    }                                   
+                                ?>
+                            </small>                            
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
                             <input type="text" class="form-control" name="last_name" value="<?php echo h($user['last_name']); ?>">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['last_name_min'] ?? '') {
+                                        echo $errors['last_name_min'];
+                                    } else if ($errors['last_name_max'] ?? '') {
+                                        echo $errors['last_name_max'];
+                                    }                                   
+                                ?>
+                            </small>                            
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['email_min'] ?? '') {
+                                        echo $errors['email_min'];
+                                    } else if ($errors['email_max'] ?? '') {
+                                        echo $errors['email_max'];
+                                    } else if ($errors['email_valid'] ?? '') {
+                                        echo $errors['email_valid'];
+                                    }         
+                                ?>
+                            </small>                              
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

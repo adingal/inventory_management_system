@@ -211,6 +211,12 @@
     function update_user($user) {
         global $db;
 
+        $errors = validate_user($user);
+
+        if (!empty($errors)) {
+            return $errors;
+        }        
+
         $sql = "UPDATE users SET ";
         $sql .= "first_name = '" . db_escape($db, $user['first_name']) . "', ";
         $sql .= "last_name = '" . db_escape($db, $user['last_name']) . "', ";
@@ -251,67 +257,34 @@
         $errors = [];
 
         # First name
-        // Check for minimum length of characters
-        if (!has_length_greater_than($user['first_name'], 1)) {
-            $errors['first_name_min'] = 'Please enter a minimum of 2 characters.';
-        }
-
-        // Check for maximum length of characters
-        if (!has_length_less_than($user['first_name'], 50)) {
-            $errors['first_name_max'] = 'Please enter a maximum of 50 characters only.';
+        if (is_blank($user['first_name'])) {
+            $errors['first_name_blank'] = 'First name cannot be blank.';
+        } else if (!has_length($user['first_name'], ['min' => 2, 'max' => 50])) {
+            $errors['first_name_length'] = 'Please enter a name between 2 to 50 characters only.';
         }
 
         # Last name
-        // Check for minimum length of characters
-        if (!has_length_greater_than($user['last_name'], 1)) {
-            $errors['last_name_min'] = 'Please enter a minimum of 2 characters.';
-        }
-
-        // Check for maximum length of characters
-        if (!has_length_less_than($user['last_name'], 50)) {
-            $errors['last_name_max'] = 'Please enter a maximum of 50 characters only.';
+        if (is_blank($user['last_name'])) {
+            $errors['last_name_blank'] = 'Last name cannot be blank.';
+        } else if (!has_length($user['last_name'], ['min' => 2, 'max' => 50])) {
+            $errors['last_name_length'] = 'Please enter a name between 2 to 50 characters only.';
         }
 
         # Email
-        // Check for minimum length of characters
-        if (!has_length_greater_than($user['email'], 1)) {
-            $errors['email_min'] = 'Email required.';
-        }
-
-        // Check for maximum length of characters
-        if (!has_length_less_than($user['email'], 50)) {
-            $errors['email_max'] = 'Please enter a maximum of 50 characters only.';
-        }        
-
-        // Check for minimum length of characters
-        if (!has_valid_email_format($user['email'])) {
+        if (is_blank($user['email'])) {
+            $errors['email_blank'] = 'Email cannot be blank.';
+        } else if (!has_length($user['email'], ['min' => 2, 'max' => 50])) {
+            $errors['email_length'] = 'Please enter an email between 2 to 50 characters only.';
+        } else if (!has_valid_email_format($user['email'])) {
             $errors['email_valid'] = 'Please enter a valid email format.';
         }
 
         # Password
-        // Check for minimum length of characters
-        if (!has_length_greater_than($user['password'], 7)) {
-            $errors['password_min'] = 'Please enter a minimum of 8 characters.';
-        }
-
-        // Check for maximum length of characters
-        if (!has_length_less_than($user['password'], 50)) {
-            $errors['password_max'] = 'Please enter a maximum of 20 characters only.';
-        }
-
-        # Confirm password
-        // Check for minimum length of characters
-        if (!has_length_greater_than($user['confirm_password'], 7)) {
-            $errors['confirm_password_min'] = 'Please enter a minimum of 8 characters.';
-        }
-
-        // Check for maximum length of characters
-        if (!has_length_less_than($user['confirm_password'], 50)) {
-            $errors['confirm_password_max'] = 'Please enter a maximum of 20 characters only.';
-        }
-
-        // Check if password and confirm password matches
-        if ($user['password'] !== $user['confirm_password']) {
+        if (is_blank($user['password'])) {
+            $errors['password_blank'] = 'Password cannot be blank.';
+        } else if (!has_length($user['password'], ['min' => 8, 'max' => 20])) {
+            $errors['password_length'] = 'Please enter a password between 8 to 20 characters only.';
+        } else if ($user['password'] !== $user['confirm_password']) {
             $errors['password_confirm'] = 'Password and confirm password does not match.';
         }
          

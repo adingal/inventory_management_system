@@ -20,6 +20,19 @@
         return $length < $max;
     }
 
+    // Test for min and max length of character length
+    // Return boolean
+    function has_length($value, $options) {
+      if(isset($options['min']) && !has_length_greater_than($value, $options['min'] - 1)) {
+            return false;
+        } elseif(isset($options['max']) && !has_length_less_than($value, $options['max'] + 1)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // Test if item name is unique
     function has_unique_item_name($item_name, $item_id="0") {
         global $db;
 
@@ -34,6 +47,7 @@
         return $item_count === 0;
     }
 
+    // Test if email is valid
     function has_valid_email_format($value) {
         $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
         return preg_match($email_regex, $value) === 1;
