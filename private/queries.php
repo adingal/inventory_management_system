@@ -299,6 +299,17 @@
             $errors['password_max'] = 'Please enter a maximum of 20 characters only.';
         }
 
+        # Confirm password
+        // Check for minimum length of characters
+        if (!has_length_greater_than($user['confirm_password'], 7)) {
+            $errors['confirm_password_min'] = 'Please enter a minimum of 8 characters.';
+        }
+
+        // Check for maximum length of characters
+        if (!has_length_less_than($user['confirm_password'], 50)) {
+            $errors['confirm_password_max'] = 'Please enter a maximum of 20 characters only.';
+        }
+
         // Check if password and confirm password matches
         if ($user['password'] !== $user['confirm_password']) {
             $errors['password_confirm'] = 'Password and confirm password does not match.';
