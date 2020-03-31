@@ -183,6 +183,28 @@
         return $user;
     }
 
+    function find_user_by_email($email) {
+        global $db;
+
+        $sql = "SELECT * FROM users ";
+        $sql .= "WHERE email = '" . db_escape($db, $email) . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+        
+        if ($result) {
+            $user = mysqli_fetch_assoc($result);
+            mysqli_free_result($result);
+
+            return $user;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            
+            exit();
+        }
+    }
+
     function insert_user($user) {
         global $db;
 

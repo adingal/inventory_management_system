@@ -16,9 +16,6 @@
     <nav id="main-header" class="navbar navbar-expand-md navbar-dark bg-dark p-md-0">
         <div class="container">
             <a href="<?php echo url_for('/index.php'); ?>" class="navbar-brand">adingal</a>
-
-            <?php if (is_logged_in()) { ?>
-
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,6 +40,5 @@
                         </li>
                     </ul>
                 </div>
-            <?php } ?>
         </div>
     </nav>
