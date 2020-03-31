@@ -14,7 +14,6 @@
         $user['last_name'] = $_POST['last_name'] ?? '';
         $user['email'] = $_POST['email'] ?? '';
         $user['password'] = $_POST['password'] ?? '';
-        $user['confirm_password'] = $_POST['confirm_password'] ?? '';
 
         $result = update_user($user);
 
@@ -43,10 +42,10 @@
                             <input type="text" class="form-control" name="first_name" value="<?php echo h($user['first_name']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['first_name_min'] ?? '') {
-                                        echo $errors['first_name_min'];
-                                    } else if ($errors['first_name_max'] ?? '') {
-                                        echo $errors['first_name_max'];
+                                    if ($errors['first_name_blank'] ?? '') {
+                                        echo $errors['first_name_blank'];
+                                    } else if ($errors['first_name_length'] ?? '') {
+                                        echo $errors['first_name_length'];
                                     }                                   
                                 ?>
                             </small>                            
@@ -56,10 +55,10 @@
                             <input type="text" class="form-control" name="last_name" value="<?php echo h($user['last_name']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['last_name_min'] ?? '') {
-                                        echo $errors['last_name_min'];
-                                    } else if ($errors['last_name_max'] ?? '') {
-                                        echo $errors['last_name_max'];
+                                    if ($errors['last_name_blank'] ?? '') {
+                                        echo $errors['last_name_blank'];
+                                    } else if ($errors['last_name_length'] ?? '') {
+                                        echo $errors['last_name_length'];
                                     }                                   
                                 ?>
                             </small>                            
@@ -81,11 +80,16 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm_password">Confirm Password</label>
-                            <input type="password" class="form-control" name="confirm_password">
+                            <input type="password" class="form-control" name="password" value="">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['password_blank'] ?? '') {
+                                        echo $errors['password_blank'];
+                                    } else if ($errors['password_length'] ?? '') {
+                                        echo $errors['password_length'];
+                                    }         
+                                ?>
+                            </small>                             
                         </div>
                         <div class="form-group">
                             <label for="registered_date">Registered Date</label>

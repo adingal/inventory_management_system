@@ -96,7 +96,11 @@
                             <input type="password" class="form-control" name="confirm_password" value="<?php echo h($user['confirm_password']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['password_confirm'] ?? '') {
+                                    if ($errors['confirm_password_blank'] ?? '') {
+                                        echo $errors['confirm_password_blank'];
+                                    } else if ($errors['confirm_password_length'] ?? '') {
+                                        echo $errors['confirm_password_length'];
+                                    } else if ($errors['password_confirm'] ?? '') {
                                         echo $errors['password_confirm'];
                                     }
                                 ?>

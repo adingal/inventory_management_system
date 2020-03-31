@@ -211,7 +211,9 @@
     function update_user($user) {
         global $db;
 
-        $errors = validate_user($user);
+        $password_sent = !is_blank($user['password']);
+
+        $errors = validate_user($user, ['password_required' => $password_sent]);
 
         if (!empty($errors)) {
             return $errors;
@@ -253,8 +255,10 @@
         return $user_count;
     }
     
-    function validate_user($user) {
+    function validate_user($user, $options=[]) {
         $errors = [];
+
+        $password_required = $options['password_required'] ?? true;
 
         # First name
         if (is_blank($user['first_name'])) {
@@ -279,13 +283,25 @@
             $errors['email_valid'] = 'Please enter a valid email format.';
         }
 
-        # Password
-        if (is_blank($user['password'])) {
-            $errors['password_blank'] = 'Password cannot be blank.';
-        } else if (!has_length($user['password'], ['min' => 8, 'max' => 20])) {
-            $errors['password_length'] = 'Please enter a password between 8 to 20 characters only.';
-        } else if ($user['password'] !== $user['confirm_password']) {
-            $errors['password_confirm'] = 'Password and confirm password does not match.';
+        # If password was changed
+        if ($password_required) {
+            # Password
+            if (is_blank($user['password'])) {
+                $errors['password_blank'] = 'Password cannot be blank.';
+            } else if (!has_length($user['password'], ['min' => 8, 'max' => 20])) {
+                $errors['password_length'] = 'Please enter a password between 8 to 20 characters only.';
+            }
+            
+            if (isset($user['confirm_password'])) {
+                # Confirm Password
+                if (is_blank($user['confirm_password'])) {
+                    $errors['confirm_password_blank'] = 'Confirm password cannot be blank.';
+                } else if (!has_length($user['confirm_password'], ['min' => 8, 'max' => 20])) {
+                    $errors['confirm_password_length'] = 'Please enter a password between 8 to 20 characters only.';
+                } else if ($user['password'] !== $user['confirm_password']) {
+                    $errors['password_confirm'] = 'Password and confirm password does not match.';
+                }
+            }
         }
          
         return $errors;
