@@ -11,8 +11,8 @@
 <?php include('../private/shared_items/main_header.php'); ?>
 
     <div id="content">
-        <?php if (!is_logged_in()) { ?>
-            <div id="login" class="d-flex align-items-center">
+        <?php if (is_logged_in()) { ?>
+            <div id="login" class="d-flex align-items-center py-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-lg-4 mx-auto">
