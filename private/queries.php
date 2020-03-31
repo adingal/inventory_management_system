@@ -225,16 +225,25 @@
 
         if (!empty($errors)) {
             return $errors;
-        }        
+        }  
+        
+        $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
         $sql = "UPDATE users SET ";
         $sql .= "first_name = '" . db_escape($db, $user['first_name']) . "', ";
         $sql .= "last_name = '" . db_escape($db, $user['last_name']) . "', ";
         $sql .= "email = '" . db_escape($db, $user['email']) . "' ";
+
+        if ($password_sent) {
+            $sql .= "hashed_password = '" . db_escape($db, $hashed_password) . "' ";
+        }
+
         $sql .= "WHERE user_id = '" . db_escape($db, $user['user_id']) . "' ";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
+
+
 
         return $result;
     }
