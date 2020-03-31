@@ -1,7 +1,7 @@
 <?php
 
     // Create sessions on login
-    function log_in_user($admin) {
+    function log_in_user($user) {
         session_regenerate_id();
 
         $_SESSION['user_id'] = $user['user_id'];
@@ -29,7 +29,7 @@
     // Use for all pages to require login
     function require_login() {
         if (!is_logged_in()) {
-            redirect_to(url_for('/index.php'));
+            redirect_to(url_for('/login.php'));
         }
     }
 
