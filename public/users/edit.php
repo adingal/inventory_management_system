@@ -68,13 +68,11 @@
                             <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
                             <small class="text-danger">
                                 <?php
-                                    if ($errors['email_min'] ?? '') {
-                                        echo $errors['email_min'];
-                                    } else if ($errors['email_max'] ?? '') {
-                                        echo $errors['email_max'];
-                                    } else if ($errors['email_valid'] ?? '') {
-                                        echo $errors['email_valid'];
-                                    }         
+                                    if ($errors['email_blank'] ?? '') {
+                                        echo $errors['email_blank'];
+                                    } else if ($errors['email_length'] ?? '') {
+                                        echo $errors['email_length'];
+                                    }      
                                 ?>
                             </small>                              
                         </div>
