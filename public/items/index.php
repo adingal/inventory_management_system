@@ -1,6 +1,8 @@
 <?php
     require_once('../../private/init.php');
 
+    require_login();
+
     $id = $_GET['id'] ?? '';
     $page_title = 'Items';
 

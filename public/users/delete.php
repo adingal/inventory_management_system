@@ -1,6 +1,8 @@
 <?php
     require_once('../../private/init.php');
 
+    require_login();
+
     $page_title = 'Delete User';
 
     $id = $_GET['id'] ?? NULL;

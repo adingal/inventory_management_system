@@ -1,6 +1,8 @@
 <?php
     require_once('../../private/init.php');
 
+    require_login();
+
     $page_title = 'Add User';
 
     if (is_post()) {
