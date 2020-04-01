@@ -34,7 +34,7 @@
                 <div class="col-md-8 col-lg-9 text-center text-md-right">
                     <a href="<?php echo url_for('/items/add.php'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                     <a href="<?php echo url_for('/items/view.php'); ?>" class="btn btn-success"><i class="far fa-eye"></i> View</a>
-                    <a href="<?php echo url_for('/items/withdraw.php'); ?>" class="btn btn-secondary"><i class="far fa-hand-point-up"></i> Withdraw</a>
+                    <a href="<?php echo url_for('/items/withdraw.php'); ?>" class="btn btn-danger"><i class="far fa-hand-point-up"></i> Withdraw</a>
                 </div>
             </div>
         </div>
