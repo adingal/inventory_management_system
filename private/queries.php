@@ -95,6 +95,32 @@
         return $result;
     }
 
+    function withdraw_item($item_id, $user_id, $quantity) {
+        global $db;
+
+        $sql = "UPDATE items SET ";
+        $sql .= "quantity = quantity - '" . db_escape($db, $quantity) . "' ";
+        $sql .= "WHERE item_id = '" . db_escape($db, $item_id) . "';";
+        $sql .= "INSERT INTO transactions ";
+        $sql .= "(user_id, item_id, withdrawn_quantity, transaction_date, remarks) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . db_escape($db, $user_id) . "', "; 
+        $sql .= "'" . db_escape($db, $item_id) . "', "; 
+        $sql .= "'" . db_escape($db, $quantity) . "', "; 
+        $sql .= "NOW(), "; 
+        $sql .= "'" . db_escape($db, $remarks) . "'";
+        
+        $result = mysqli_multi_query($db, $sql);
+
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;             
+        }
+    }
+
     function item_count() {
         global $db;
 
