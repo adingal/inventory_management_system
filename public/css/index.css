@@ -22,8 +22,8 @@ body {
 #home h1 {
     border-bottom: 8px double #ddd;}
 
-#actions a {
-    min-width: 90px;}
+#actions .btn {
+    min-width: 125px;}
 
 #actions label {
     min-width: 150px;}
@@ -38,7 +38,14 @@ body {
     min-width: 82px;}
     
 @media (max-width: 768px) {
-    #actions a {
+    #actions .btn {
+        width: 49%;}
+    #actions .btn-secondary {
+        margin-top: 8px;}   
+}
+
+@media (max-width: 992px) {
+    #actions .btn {
         width: 49%;}
     #actions .btn-secondary {
         margin-top: 8px;}   

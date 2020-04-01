@@ -13,7 +13,7 @@
 <?php include(SHARED_PATH . '/main_header.php'); ?>
 
 <div id="content">
-    <div id="actions" class="pt-5 pb-2 mt-3">
+    <div id="actions" class="pt-5 pb-1 mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-lg-3 mb-2">
@@ -32,10 +32,10 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-lg-9 text-center text-md-right">
-                    <a href="<?php echo url_for('/items/add.php'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
-                    <a href="<?php echo url_for('/items/view.php'); ?>" class="btn btn-success"><i class="far fa-eye"></i> View</a>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#replenish_item">Replenish</button>
-                    <a href="<?php echo url_for('/items/withdraw.php'); ?>" class="btn btn-danger"><i class="far fa-hand-point-up"></i> Withdraw</a>
+                    <a href="<?php echo url_for('/items/add.php'); ?>" class="btn btn-primary mb-1"><i class="fa fa-plus"></i> Add</a>
+                    <a href="<?php echo url_for('/items/view.php'); ?>" class="btn btn-success mb-1"><i class="far fa-eye"></i> View</a>
+                    <a href="#" class="btn btn-info mb-1" data-toggle="modal" data-target="#replenish_item">Replenish</a>
+                    <a href="<?php echo url_for('/items/withdraw.php'); ?>" class="btn btn-danger mb-1"><i class="far fa-hand-point-up"></i> Withdraw</a>
                 </div>
             </div>
         </div>
