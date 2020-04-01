@@ -6,12 +6,24 @@
     $page_title = 'Withdraw Item';
 
     $id = $_GET['id'] ?? NULL;
+    $user_id = $_SESSION['user_id'];
 
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
 
     $item = find_item_by_id($id);
+
+    if (is_post()) {
+        $quantity = $_POST['quantity'] ?? '';
+        $remarks = $_POST['remarks'] ?? '';
+
+        $result = withdraw_item($id, $user_id, $quantity, $remarks);
+
+        if ($result) {
+            redirect_to(url_for('/transactions/index.php'));
+        }
+    }
 
 ?>
 
@@ -35,6 +47,10 @@
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity" min="1" max="<?php echo h($item['quantity']); ?>" value="1">
                             <small class="text-danger">Available quantity: <?php echo h($item['quantity']); ?></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
                         </div>
                         <div class="form-group text-right">
                             <button class="btn btn-dark" data-dismiss="modal">Withdraw</button>

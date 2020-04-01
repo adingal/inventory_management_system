@@ -95,7 +95,7 @@
         return $result;
     }
 
-    function withdraw_item($item_id, $user_id, $quantity) {
+    function withdraw_item($item_id, $user_id, $quantity, $remarks) {
         global $db;
 
         $sql = "UPDATE items SET ";
@@ -108,7 +108,7 @@
         $sql .= "'" . db_escape($db, $item_id) . "', "; 
         $sql .= "'" . db_escape($db, $quantity) . "', "; 
         $sql .= "NOW(), "; 
-        $sql .= "'" . db_escape($db, $remarks) . "'";
+        $sql .= "'" . db_escape($db, $remarks) . "')";
         
         $result = mysqli_multi_query($db, $sql);
 
