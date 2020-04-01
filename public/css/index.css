@@ -30,10 +30,10 @@ body {
 
 #view_item .btn,
 #view_user .btn,
-#view_transaction .btn,
 #edit_item .btn,
 #edit_user .btn,
-#edit_transaction .btn,
+#add_item .btn,
+#add_user .btn,
 #withdraw_item .btn {
     min-width: 82px;}
     
