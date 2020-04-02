@@ -12,6 +12,11 @@
     }
 
     $item = find_item_by_id($id);
+
+    if (empty($item)) {
+        redirect_to(url_for('/items/index.php'));
+    }
+
     $formatted_date = date_format(date_create($item['added_date']), 'M d, Y');
 ?>
 

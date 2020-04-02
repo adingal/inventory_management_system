@@ -13,7 +13,6 @@
         $item['added_by'] = $_POST['added_by'];
 
         $result = insert_item($item);
-
         if ($result === true) {
             redirect_to(url_for('/items/index.php'));
         } else {
@@ -31,6 +30,7 @@
 <?php include(SHARED_PATH . '/main_header.php'); ?>
 
 <div id="content">
+
     <div id="add_item" class="py-5">
         <div class="container">
             <div class="row">
@@ -89,6 +89,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <?php include(SHARED_PATH . '/main_footer.php'); ?>

@@ -4,9 +4,11 @@
     require_login();
 
     $id = $_GET['id'] ?? '';
+    
     $page_title = 'Items';
 
     $items = find_all_items();
+
     $item_ids = find_all_items_id();
 ?>
 

@@ -6,25 +6,28 @@
     $page_title = 'Withdraw Item';
 
     $id = $_GET['id'] ?? NULL;
+
     $user_id = $_SESSION['user_id'];
 
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
-    }
-
-    $item = find_item_by_id($id);
+    } 
 
     if (is_post()) {
         $quantity = $_POST['quantity'] ?? '';
         $remarks = $_POST['remarks'] ?? '';
 
         $result = withdraw_item($id, $user_id, $quantity, $remarks);
-
         if ($result) {
             redirect_to(url_for('/transactions/index.php'));
         }
     }
 
+    $item = find_item_by_id($id);
+
+    if (empty($item)) {
+        redirect_to(url_for('/items/index.php'));
+    }       
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>

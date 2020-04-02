@@ -1,6 +1,8 @@
 <?php
     require_once('../../private/init.php');
 
+    require_login();
+
     $page_title = 'Replenish Item';
 
     $id = $_GET['id'] ?? NULL;
@@ -10,6 +12,10 @@
     }
 
     $item = find_item_by_id($id);
+
+    if (empty($item)) {
+        redirect_to(url_for('/items/index.php'));
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
