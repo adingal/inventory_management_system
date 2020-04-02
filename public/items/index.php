@@ -58,13 +58,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($item = mysqli_fetch_assoc($items)) { ?>
+                            <?php
+                                while ($item = mysqli_fetch_assoc($items)) { 
+                            
+                                $user = find_user_by_id($item['user_id']);
+                            ?>
                                 <tr>
                                     <td>    <?php echo h($item['item_id']);            ?></td>
                                     <td>    <?php echo h($item['item_name']);          ?></td>
                                     <td>    <?php echo h($item['item_description']);   ?></td>
                                     <td>    <?php echo h($item['quantity']);           ?></td>
-                                    <td>    <?php echo h($item['added_by']);           ?></td>
+                                    <td>    <?php echo h($user['first_name'] . ' ' . $user['last_name']); ?></td>
                                     <td>    <?php echo h($item['added_date']);         ?></td>
                                 </tr>
                             <?php } ?>

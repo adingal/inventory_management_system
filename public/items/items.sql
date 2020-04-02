@@ -3,7 +3,8 @@ CREATE TABLE items (
     item_name VARCHAR(255) NOT NULL,
     item_description TEXT NOT NULL,
     quantity INT UNSIGNED NOT NULL,
-    added_by VARCHAR(255) NOT NULL,
+    -- added_by VARCHAR(255) NOT NULL, -- Replace with user_id for good database design
+    user_id INT(10) UNSIGNED NOT NULL,
     added_date DATETIME NOT NULL,
     PRIMARY KEY (item_id),
     INDEX (added_date)

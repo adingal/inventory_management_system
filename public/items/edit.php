@@ -30,6 +30,7 @@
         redirect_to(url_for('/items/index.php'));
     }
 
+    $user = find_user_by_id($item['user_id']);
     $formatted_date = date_format(date_create($item['added_date']), 'M d, Y');
 ?>
 
@@ -84,7 +85,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_by">Added By</label>
-                            <input type="text" class="form-control" name="added_by" <?php echo 'value="' . h($item['added_by']) . '" disabled'; ?>>
+                            <input type="text" class="form-control" name="added_by" <?php echo 'value="' . h($user['first_name'] . ' ' . $user['last_name']) . '"'; ?> disabled>
                         </div>
                         <div class="form-group mb-2">
                             <label for="added_date">Added Date</label>

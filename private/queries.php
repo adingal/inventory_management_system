@@ -47,13 +47,13 @@
         }
 
         $sql = "INSERT INTO items ";
-        $sql .= "(item_name, item_description, quantity, added_by, added_date) ";
+        $sql .= "(item_name, item_description, quantity, user_id, added_date) ";
         $sql .= "VALUES ";
         $sql .= "(";
         $sql .= "'" . db_escape($db, $item['item_name']) . "', ";
         $sql .= "'" . db_escape($db, $item['item_description']) . "', ";
         $sql .= "'" . db_escape($db, $item['quantity']) . "', ";
-        $sql .= "'" . db_escape($db, $item['added_by']) . "', ";
+        $sql .= "'" . db_escape($db, $item['user_id']) . "', ";
         $sql .= "NOW()";
         $sql .= ")";
 

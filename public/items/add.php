@@ -5,12 +5,16 @@
 
     $page_title = 'Add Item';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
+    $user = find_user_by_id($user_id);
+
     if (is_post()) {
         $item = [];
         $item['item_name'] = $_POST['item_name'];
         $item['item_description'] = $_POST['description'];
         $item['quantity'] = $_POST['quantity'];
-        $item['added_by'] = $_POST['added_by'];
+        $item['user_id'] = $user_id;
 
         $result = insert_item($item);
         if ($result === true) {
@@ -23,7 +27,7 @@
         $item['item_name'] = '';
         $item['item_description'] = '';
         $item['quantity'] = '';
-        $item['added_by'] = '';        
+        $item['user_id'] = '';        
     }
 ?>
 
@@ -77,8 +81,8 @@
                             </small>                            
                         </div>
                         <div class="form-group mb-2">
-                            <label for="added_by">Added By</label>
-                            <input type="text" class="form-control" name="added_by" value="<?php echo h($item['added_by']);?>">
+                            <label for="user_id">Added By</label>
+                            <input type="text" class="form-control" name="user_id" <?php echo 'value="' . h($user['first_name'] . ' ' . $user['last_name']) . '"'; ?> disabled>
                         </div>
                         <div class="form-group mb-2 text-right">
                             <input type="submit" class="btn btn-dark" value="Add">
