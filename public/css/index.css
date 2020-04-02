@@ -34,7 +34,8 @@ body {
 #edit_user .btn,
 #add_item .btn,
 #add_user .btn,
-#withdraw_item .btn {
+#withdraw_item .btn,
+#replenish_item .btn {
     min-width: 82px;}
     
 @media (max-width: 768px) {

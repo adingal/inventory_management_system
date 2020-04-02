@@ -3,6 +3,7 @@ const el = {
     selectedId: document.getElementById('selected_id'),
     actionsViewBtn: document.querySelector('#actions a[href*="view.php"]'),
     actionsWithdrawBtn: document.querySelector('#actions a[href*="withdraw.php"]'),
+    actionsReplenishBtn: document.querySelector('#actions a[href*="replenish.php"]'),
     content: document.getElementById('content'),
     loginForm: document.querySelector('#login form')
 };
@@ -65,6 +66,21 @@ function setBtnDefaultId(element, currentId) {
 
         el.selectedId.addEventListener('click', () => {
             handleChange(el.selectedId, el.actionsWithdrawBtn);
+        });
+    }
+
+})();
+
+// Set href for replenish button on items index page depending on selected id
+(function setItemsReplenishBtn() {
+    
+    // If actions view button is present
+    if (el.actionsReplenishBtn) {
+        let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
+        setBtnDefaultId(el.actionsReplenishBtn, currentId);
+
+        el.selectedId.addEventListener('click', () => {
+            handleChange(el.selectedId, el.actionsReplenishBtn);
         });
     }
 

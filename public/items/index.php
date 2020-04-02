@@ -34,7 +34,7 @@
                 <div class="col-md-8 col-lg-9 text-center text-md-right">
                     <a href="<?php echo url_for('/items/add.php'); ?>" class="btn btn-primary mb-1"><i class="fa fa-plus"></i> Add</a>
                     <a href="<?php echo url_for('/items/view.php'); ?>" class="btn btn-success mb-1"><i class="far fa-eye"></i> View</a>
-                    <a href="#" class="btn btn-info mb-1" data-toggle="modal" data-target="#replenish_item">Replenish</a>
+                    <a href="<?php echo url_for('/items/replenish.php'); ?>" class="btn btn-info mb-1" ><i class="fas fa-gas-pump"></i> Replenish</a>
                     <a href="<?php echo url_for('/items/withdraw.php'); ?>" class="btn btn-danger mb-1"><i class="far fa-hand-point-up"></i> Withdraw</a>
                 </div>
             </div>
@@ -71,32 +71,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- LOGIN MODAL -->
-    <div id="replenish_item" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal Title</h5>
-                    <button class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form action="#">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input class="form-control mb-2" type="text" placeholder="Username">
-                        <label for="username">Password</label>
-                        <input class="form-control" type="password" placeholder="Password">
-                    </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-info" data-dismiss="modal">Close</button>
-                    <button class="btn btn-info" data-dismiss="modal">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>    
+    </div>   
 </div>
 
 <?php mysqli_free_result($items); ?>
