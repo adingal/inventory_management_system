@@ -9,6 +9,7 @@ CREATE TABLE transactions (
     transaction_date DATETIME NOT NULL,
     remarks TEXT NOT NULL,
     PRIMARY KEY (transaction_id),
+    INDEX (transaction_type),
     INDEX (transaction_date)
 
 /* Removed foreign key constraint
