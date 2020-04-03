@@ -59,7 +59,13 @@
 
         $result = mysqli_query($db, $sql);
 
-        return $result;
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }
     }
 
     function update_item($item) {
@@ -80,7 +86,13 @@
 
         $result = mysqli_query($db, $sql);
 
-        return $result;
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }
     }
 
     function delete_item($id) {
@@ -92,7 +104,13 @@
 
         $result = mysqli_query($db, $sql);
 
-        return $result;
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }
     }
 
     function withdraw_item($item_id, $user_id, $quantity, $remarks) {
@@ -293,7 +311,13 @@
 
         $result = mysqli_query($db, $sql);
 
-        return $result;
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }        
     }
 
     function delete_user($id) {
@@ -305,7 +329,13 @@
 
         $result = mysqli_query($db, $sql);
 
-        return $result;
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }        
     }
 
     function user_count() {
