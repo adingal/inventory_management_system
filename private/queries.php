@@ -139,6 +139,24 @@
         }
     }
 
+    function replenish_item($item) {
+        global $db;
+
+        $sql = "UPDATE items SET ";
+        $sql .= "quantity = '" . db_escape($db, $item['replenish_quantity']) . "' + quantity ";
+        $sql .= "WHERE item_id = '" . db_escape($db, $item['item_id']) . "'";
+
+        $result = mysqli_query($db, $sql);
+
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }
+    }
+
     function item_count() {
         global $db;
 

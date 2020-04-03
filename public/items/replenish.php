@@ -16,6 +16,16 @@
     if (empty($item)) {
         redirect_to(url_for('/items/index.php'));
     }
+
+    if (is_post()) {
+        $item['replenish_quantity'] = $_POST['replenish_quantity'];
+
+        $result = replenish_item($item);
+
+        if ($result) {
+            redirect_to(url_for('/items/index.php'));
+        }
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
