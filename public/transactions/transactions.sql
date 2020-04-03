@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS transactions;
 CREATE TABLE transactions (
     transaction_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT(10) UNSIGNED NOT NULL,
@@ -6,7 +7,10 @@ CREATE TABLE transactions (
     transaction_date DATETIME NOT NULL,
     remarks TEXT NOT NULL,
     PRIMARY KEY (transaction_id),
-    INDEX (transaction_date),
+    INDEX (transaction_date)
+
+/* Removed foreign key constraint
+
     FOREIGN KEY (user_id)
         REFERENCES users (user_id)
     ON DELETE NO ACTION
@@ -15,6 +19,8 @@ CREATE TABLE transactions (
         REFERENCES items (item_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION 
+    
+*/ 
 ) ENGINE = INNODB;
 
 
