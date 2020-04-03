@@ -14,10 +14,14 @@
     } 
 
     if (is_post()) {
-        $quantity = $_POST['quantity'] ?? '';
-        $remarks = $_POST['remarks'] ?? '';
+        $options = [];
+        $options['item_id'] = $id ?? '';
+        $options['user_id'] = $user_id ?? '';
+        $options['quantity'] = $_POST['quantity'] ?? '';
+        $options['transaction_type'] = 'Withdraw' ?? '';
+        $options['remarks'] = $_POST['remarks'] ?? '';
 
-        $result = withdraw_item($id, $user_id, $quantity, $remarks);
+        $result = withdraw_item($options);
         if ($result) {
             redirect_to(url_for('/transactions/index.php'));
         }
