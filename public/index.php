@@ -25,7 +25,7 @@
                                         <i class="fas fa-boxes"></i>
                                     </h3>
                                     <h4><?php echo h($item_count); ?></h4>
-                                    <a href="" class="btn btn-outline-light">View</a>
+                                    <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                         <i class="far fa-edit"></i>
                                     </h3>
                                     <h4><?php echo h($transaction_count); ?></h4>
-                                    <a href="" class="btn btn-outline-light">View</a>
+                                    <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                         <i class="fa fa-user"></i>
                                     </h3>
                                     <h4><?php echo h($user_count); ?></h4>
-                                    <a href="" class="btn btn-outline-light">View</a>
+                                    <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                         </div>
