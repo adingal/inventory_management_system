@@ -76,7 +76,7 @@
                         <button class="btn btn-outline-light btn-block">
                             Login
                         </button>
-                        <small class="text-white">
+                        <small class="d-block text-white text-center p-0 pt-2">
                             <?php
                                 if ($errors['login_fail'] ?? '') {
                                     echo $errors['login_fail'];
