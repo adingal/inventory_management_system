@@ -15,8 +15,8 @@
 
     if (is_post()) {
         $options = [];
-        $options['item_id'] = $id ?? '';
         $options['user_id'] = $user_id ?? '';
+        $options['item_id'] = $id ?? '';
         $options['quantity'] = $_POST['quantity'] ?? '';
         $options['transaction_type'] = 'Withdraw' ?? '';
         $options['remarks'] = $_POST['remarks'] ?? '';

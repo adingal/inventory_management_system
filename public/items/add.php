@@ -18,6 +18,15 @@
 
         $result = insert_item($item);
         if ($result === true) {
+            $options = [];
+            $options['user_id'] = $user_id ?? '';
+            $options['item_id'] = mysqli_insert_id($db) ?? '';
+            $options['quantity'] = $item['quantity'] ?? '';
+            $options['transaction_type'] = 'Add' ?? '';
+            $options['remarks'] = '';
+
+            $transaction = withdraw_item($options);
+
             redirect_to(url_for('/items/index.php'));
         } else {
             $errors = $result;
