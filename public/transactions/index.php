@@ -43,8 +43,9 @@
                                 <th>Transaction ID</th>
                                 <th>User Name</th>
                                 <th>Item Name</th>
-                                <th>Withdrawn Quantity</th>
-                                <th>Transaction Date</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                                <th>Date</th>
                                 <th>Remarks</th>
                             </tr>
                         </thead>
@@ -64,7 +65,8 @@
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
                                     <td><?php echo h($user_name); ?></td>
                                     <td><?php echo h($item_name); ?></td>
-                                    <td><?php echo h($transaction['withdrawn_quantity']); ?></td>
+                                    <td><?php echo h($transaction['quantity']); ?></td>
+                                    <td><?php echo h($transaction['transaction_type']); ?></td>
                                     <td><?php echo h($transaction['transaction_date']); ?></td>
                                     <td><?php echo h($transaction['remarks']); ?></td>
                                 </tr>

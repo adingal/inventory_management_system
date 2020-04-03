@@ -120,11 +120,12 @@
         $sql .= "quantity = quantity - '" . db_escape($db, $quantity) . "' ";
         $sql .= "WHERE item_id = '" . db_escape($db, $item_id) . "';";
         $sql .= "INSERT INTO transactions ";
-        $sql .= "(user_id, item_id, withdrawn_quantity, transaction_date, remarks) ";
+        $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $user_id) . "', "; 
         $sql .= "'" . db_escape($db, $item_id) . "', "; 
         $sql .= "'" . db_escape($db, $quantity) . "', "; 
+        $sql .= "'Withdraw', "; 
         $sql .= "NOW(), "; 
         $sql .= "'" . db_escape($db, $remarks) . "')";
         
