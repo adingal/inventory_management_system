@@ -60,6 +60,7 @@
                                 // Find item and replace item_id to their names
                                 $item = find_item_by_id($transaction['item_id']);
                                 $item_name = $item['item_name'];
+                                $trans_date = date_create($transaction['transaction_date']);
                             ?>
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
@@ -67,7 +68,7 @@
                                     <td><?php echo h($item_name); ?></td>
                                     <td><?php echo h($transaction['quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_type']); ?></td>
-                                    <td><?php echo h($transaction['transaction_date']); ?></td>
+                                    <td><?php echo h(date_format($trans_date, 'm/d/Y H:i A')); ?></td>
                                     <td><?php echo h($transaction['remarks']); ?></td>
                                 </tr>
                             <?php } ?>
