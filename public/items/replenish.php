@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <form action="<?php echo url_for('/items/replenish.php' . h(u($id))); ?>">
+                    <form action="<?php echo url_for('/items/replenish.php?id=' . h(u($id))); ?>" method="post">
                         <h1 class="display-5 text-truncate">Replenish Item</h1>
                         <div class="form-group">
                             <label for="item_id">Item ID</label>
