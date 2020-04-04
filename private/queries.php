@@ -117,17 +117,16 @@
         global $db;
 
         $sql = "UPDATE items SET ";
-        $sql .= "quantity = quantity - '" . db_escape($db, $options['quantity']) . "' ";
+        $sql .= "quantity = quantity - '";
+        
+        if ($options['transaction_type'] == 'Add') {
+            $sql .= "0' ";
+        } else {
+            $sql .=  db_escape($db, $options['quantity']) . "' ";
+        }
+
         $sql .= "WHERE item_id = '" . db_escape($db, $options['item_id']) . "';";
-        $sql .= "INSERT INTO transactions ";
-        $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
-        $sql .= "VALUES (";
-        $sql .= "'" . db_escape($db, $options['user_id']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['item_id']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['quantity']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['transaction_type']) . "', ";  
-        $sql .= "NOW(), "; 
-        $sql .= "'" . db_escape($db, $options['remarks']) . "')";
+
         
         $result = mysqli_multi_query($db, $sql);
 
@@ -467,6 +466,30 @@
         $result = mysqli_query($db, $sql);
 
         return $result;
+    }
+
+    function insert_transaction($options) {
+        global $db;
+
+        $sql .= "INSERT INTO transactions ";
+        $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . db_escape($db, $options['user_id']) . "', "; 
+        $sql .= "'" . db_escape($db, $options['item_id']) . "', "; 
+        $sql .= "'" . db_escape($db, $options['quantity']) . "', "; 
+        $sql .= "'" . db_escape($db, $options['transaction_type']) . "', ";  
+        $sql .= "NOW(), "; 
+        $sql .= "'" . db_escape($db, $options['remarks']) . "')";
+        
+        $result = mysqli_query($db, $sql);
+
+        if ($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;            
+        }       
     }
 
     function transaction_count() {
