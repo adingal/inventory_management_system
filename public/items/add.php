@@ -17,16 +17,16 @@
         $item['user_id'] = $user_id;
 
         $result = insert_item($item);
+
         if ($result === true) {
-            $options = [];
-            $options['user_id'] = $user_id ?? '';
-            $options['item_id'] = mysqli_insert_id($db) ?? '';
-            $options['quantity'] = $item['quantity'] ?? '';
-            $options['transaction_type'] = 'Add' ?? '';
-            $options['remarks'] = '';
+            $transaction = [];
+            $transaction['user_id'] = $user_id ?? '';
+            $transaction['item_id'] = mysqli_insert_id($db) ?? '';
+            $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['transaction_type'] = 'Add' ?? '';
+            $transaction['remarks'] = '';
 
-            $transaction = withdraw_item($options);
-
+            insert_transaction($transaction);
             redirect_to(url_for('/items/index.php'));
         } else {
             $errors = $result;

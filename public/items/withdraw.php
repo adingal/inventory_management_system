@@ -22,9 +22,9 @@
         $transaction['remarks'] = $_POST['remarks'] ?? '';
 
         $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
-        insert_transaction($transaction);
 
         if ($result) {
+            insert_transaction($transaction);
             redirect_to(url_for('/transactions/index.php'));
         }
     }
