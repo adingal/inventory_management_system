@@ -5,6 +5,8 @@
 
     $page_title = 'Replenish Item';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
@@ -23,6 +25,14 @@
         $result = replenish_item($item);
 
         if ($result) {
+            $transaction = [];
+            $transaction['user_id'] = $user_id ?? '';
+            $transaction['item_id'] = $id ?? '';
+            $transaction['quantity'] = $item['replenish_quantity'] ?? '';
+            $transaction['transaction_type'] = 'Replenish' ?? '';
+            $transaction['remarks'] = '';
+
+            insert_transaction($transaction);            
             redirect_to(url_for('/items/index.php'));
         }
     }
@@ -52,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="replenish_quantity">Replenish Quantity</label>
-                            <input type="number" class="form-control" name="replenish_quantity" min="1">
+                            <input type="number" class="form-control" name="replenish_quantity" min="1" value="1">
                         </div>
                         <div class="form-group text-right">
                             <input type="submit" class="btn btn-dark" value="Replenish">
