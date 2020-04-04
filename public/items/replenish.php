@@ -20,21 +20,31 @@
     }
 
     if (is_post()) {
-        $item['replenish_quantity'] = $_POST['replenish_quantity'];
+        $errors = [];
 
-        $result = replenish_item($item);
-
-        if ($result) {
-            $transaction = [];
-            $transaction['user_id'] = $user_id ?? '';
-            $transaction['item_id'] = $id ?? '';
-            $transaction['quantity'] = $item['replenish_quantity'] ?? '';
-            $transaction['transaction_type'] = 'Replenish' ?? '';
-            $transaction['remarks'] = '';
-
-            insert_transaction($transaction);            
-            redirect_to(url_for('/items/index.php'));
+        $item['replenish_quantity'] = $_POST['replenish_quantity'] ?? '1';
+        if (empty($item['replenish_quantity'])) {
+            $errors['replenish_quantity'] = 'Please enter a quantiy to replenish.';
         }
+
+        if (empty($errors)) {
+            $result = replenish_item($item);
+
+            if ($result) {
+                $transaction = [];
+                $transaction['user_id'] = $user_id ?? '';
+                $transaction['item_id'] = $id ?? '';
+                $transaction['quantity'] = $item['replenish_quantity'] ?? '';
+                $transaction['transaction_type'] = 'Replenish' ?? '';
+                $transaction['remarks'] = '';
+    
+                insert_transaction($transaction);            
+                redirect_to(url_for('/items/index.php'));
+            }
+        } else {
+
+        }
+
     }
 ?>
 
@@ -62,7 +72,14 @@
                         </div>
                         <div class="form-group">
                             <label for="replenish_quantity">Replenish Quantity</label>
-                            <input type="number" class="form-control" name="replenish_quantity" min="1" value="1">
+                            <input type="number" class="form-control" name="replenish_quantity" min="1" value="">
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['replenish_quantity'] ?? '') {
+                                        echo $errors['replenish_quantity'];
+                                    }
+                                ?>
+                            </small>                            
                         </div>
                         <div class="form-group text-right">
                             <input type="submit" class="btn btn-dark" value="Replenish">

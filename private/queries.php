@@ -494,6 +494,6 @@
         mysqli_free_result($result);
 
         return $transaction_count;
-    }     
-
+    }
+    
 ?>
