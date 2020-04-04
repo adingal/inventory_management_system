@@ -5,6 +5,8 @@
 
     $page_title = 'Edit Item';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
@@ -17,7 +19,16 @@
         $item['quantity'] = $_POST['quantity'];
 
         $result = update_item($item);
+
         if ($result === true) {
+            $transaction = [];
+            $transaction['user_id'] = $user_id ?? '';
+            $transaction['item_id'] = $id ?? '';
+            $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['transaction_type'] = 'Edit' ?? '';
+            $transaction['remarks'] = '';
+
+            insert_transaction($transaction);            
             redirect_to(url_for('/items/index.php'));
         } else {
             $errors = $result;
