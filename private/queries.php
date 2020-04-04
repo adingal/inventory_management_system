@@ -113,22 +113,14 @@
         }
     }
 
-    function withdraw_item($options) {
+    function withdraw_item($item_id, $quantity) {
         global $db;
 
         $sql = "UPDATE items SET ";
-        $sql .= "quantity = quantity - '";
-        
-        if ($options['transaction_type'] == 'Add') {
-            $sql .= "0' ";
-        } else {
-            $sql .=  db_escape($db, $options['quantity']) . "' ";
-        }
+        $sql .= "quantity = quantity - '" . db_escape($db, $quantity) . "' ";
+        $sql .= "WHERE item_id = '" . db_escape($db, $item_id) . "';";
 
-        $sql .= "WHERE item_id = '" . db_escape($db, $options['item_id']) . "';";
-
-        
-        $result = mysqli_multi_query($db, $sql);
+        $result = mysqli_query($db, $sql);
 
         if ($result) {
             return true;
@@ -468,18 +460,18 @@
         return $result;
     }
 
-    function insert_transaction($options) {
+    function insert_transaction($transaction) {
         global $db;
 
         $sql .= "INSERT INTO transactions ";
         $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
         $sql .= "VALUES (";
-        $sql .= "'" . db_escape($db, $options['user_id']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['item_id']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['quantity']) . "', "; 
-        $sql .= "'" . db_escape($db, $options['transaction_type']) . "', ";  
+        $sql .= "'" . db_escape($db, $transaction['user_id']) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['item_id']) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['quantity']) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['transaction_type']) . "', ";  
         $sql .= "NOW(), "; 
-        $sql .= "'" . db_escape($db, $options['remarks']) . "')";
+        $sql .= "'" . db_escape($db, $transaction['remarks']) . "')";
         
         $result = mysqli_query($db, $sql);
 

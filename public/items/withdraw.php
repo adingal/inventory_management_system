@@ -14,14 +14,16 @@
     } 
 
     if (is_post()) {
-        $options = [];
-        $options['user_id'] = $user_id ?? '';
-        $options['item_id'] = $id ?? '';
-        $options['quantity'] = $_POST['quantity'] ?? '';
-        $options['transaction_type'] = 'Withdraw' ?? '';
-        $options['remarks'] = $_POST['remarks'] ?? '';
+        $transaction = [];
+        $transaction['user_id'] = $user_id ?? '';
+        $transaction['item_id'] = $id ?? '';
+        $transaction['quantity'] = $_POST['quantity'] ?? '';
+        $transaction['transaction_type'] = 'Withdraw' ?? '';
+        $transaction['remarks'] = $_POST['remarks'] ?? '';
 
-        $result = withdraw_item($options);
+        $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
+        insert_transaction($transaction);
+
         if ($result) {
             redirect_to(url_for('/transactions/index.php'));
         }
