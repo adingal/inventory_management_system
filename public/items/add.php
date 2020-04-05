@@ -24,7 +24,7 @@
             $transaction['item_id'] = mysqli_insert_id($db) ?? '';
             $transaction['quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Add' ?? '';
-            $transaction['remarks'] = '';
+            $transaction['remarks'] = $_POST['remarks'] ?? '';
 
             insert_transaction($transaction);
             redirect_to(url_for('/items/index.php'));
@@ -89,6 +89,10 @@
                                 ?>
                             </small>                            
                         </div>
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
+                        </div>                        
                         <div class="form-group mb-2">
                             <label for="user_id">Added By</label>
                             <input type="text" class="form-control" name="user_id" <?php echo 'value="' . h($user['first_name'] . ' ' . $user['last_name']) . '"'; ?> disabled>
