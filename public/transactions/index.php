@@ -52,16 +52,21 @@
                         <tbody>
                             <?php 
                                 while ($transaction = mysqli_fetch_assoc($transactions)) {
-                                
-                                // Find user and replace user_id to their names
-                                $user = find_user_by_id($transaction['user_id']);
-                                $user_name = $user['first_name'] . ' ' . $user['last_name'];
 
-                                // Find item and replace item_id to their names
-                                $item = find_item_by_id($transaction['item_id']);
-                                $item_name = $item['item_name'];
-                                $trans_date = date_create($transaction['transaction_date']);
-                            ?>
+                                    // Find user and replace user_id to their names
+                                    $user = find_user_by_id($transaction['user_id']);
+                                    $user_name = $user['first_name'] . ' ' . $user['last_name'];
+
+                                    // Find item and replace item_id to their names
+                                    // Test if item is still active
+                                    $item = find_item_by_id($transaction['item_id']);
+                                    if (!$item) {
+                                        continue;
+                                    }
+                                
+                                    $item_name = $item['item_name'];
+                                    $trans_date = date_create($transaction['transaction_date']);
+                                ?>
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
                                     <td><?php echo h($user_name); ?></td>
