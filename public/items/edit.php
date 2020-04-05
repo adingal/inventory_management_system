@@ -26,7 +26,7 @@
             $transaction['item_id'] = $id ?? '';
             $transaction['quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Edit' ?? '';
-            $transaction['remarks'] = '';
+            $transaction['remarks'] = $_POST['remarks'] ?? '';
 
             insert_transaction($transaction);            
             redirect_to(url_for('/items/index.php'));
@@ -94,6 +94,10 @@
                                 ?>
                             </small>                        
                         </div>
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
+                        </div>                        
                         <div class="form-group mb-2">
                             <label for="added_by">Added By</label>
                             <input type="text" class="form-control" name="added_by" <?php echo 'value="' . h($user['first_name'] . ' ' . $user['last_name']) . '"'; ?> disabled>
