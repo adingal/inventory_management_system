@@ -20,7 +20,7 @@
 
         $result = update_item($item);
 
-        if ($result === true) {
+        if (mysqli_affected_rows($db)) {
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
             $transaction['item_id'] = $id ?? '';
@@ -29,6 +29,7 @@
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
             insert_transaction($transaction);            
+        } else if ($result) {
             redirect_to(url_for('/items/index.php'));
         } else {
             $errors = $result;
