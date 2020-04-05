@@ -26,10 +26,6 @@
         if (empty($item['replenish_quantity'])) {
             $errors['replenish_quantity'] = 'Please enter a quantiy to replenish.';
         }
-        
-        if (empty($_POST['remarks'])) {
-            $errors['remarks'] = 'Remarks required.';
-        }
 
         if (empty($errors)) {
             $result = replenish_item($item);
@@ -87,14 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label for="remarks">Remarks</label>
-                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
-                            <small class="text-danger">
-                                <?php
-                                    if ($errors['remarks'] ?? '') {
-                                        echo $errors['remarks'];
-                                    }
-                                ?>
-                            </small>                             
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>                           
                         </div>                        
                         <div class="form-group text-right">
                             <input type="submit" class="btn btn-dark" value="Replenish">
