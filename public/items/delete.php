@@ -5,24 +5,34 @@
 
     $page_title = 'Delete Item';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
 
-    if (is_post()) {
-        $result = delete_item($id);
-        if ($result) {
-            redirect_to(url_for('/items/index.php'));
-        }
-    }
-
     $item = find_item_by_id($id);
 
     if (empty($item)) {
         redirect_to(url_for('/items/index.php'));
-    }    
+    }      
+
+    if (is_post()) {
+        $result = delete_item($id);
+        if ($result) {
+            $transaction = [];
+            $transaction['item_id'] = $id ?? '';
+            $transaction['user_id'] = $user_id ?? '';
+            $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['transaction_type'] = 'Delete' ?? '';
+            $transaction['remarks'] = $_POST['remarks'] ?? '';
+
+            insert_transaction($transaction);
+            redirect_to(url_for('/items/index.php'));
+        }
+    }  
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -42,6 +52,10 @@
                             <label for="item_name">Item Name</label>
                             <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']); ?>" disabled>
                         </div>
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
+                        </div>                          
                         <div class="form-group mb-2 text-right">
                             <input type="submit" class="btn btn-dark" value="Delete">
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
