@@ -463,6 +463,12 @@
     function insert_transaction($transaction) {
         global $db;
 
+        $errors = validate_transaction($transaction);
+
+        if (!empty($errors)) {
+            return $errors;
+        }          
+
         $sql .= "INSERT INTO transactions ";
         $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
         $sql .= "VALUES (";
@@ -482,6 +488,32 @@
             db_disconnect($db);
             exit;            
         }       
+    }
+
+    function validate_transaction($transaction) {
+        $errors = [];
+
+        // User ID
+        if (!is_blank($transaction['user_id'])) {
+            $errors['user_id'] = 'User ID cannot be blank.';
+        }
+
+        // Item ID
+        if (!is_blank($transaction['item_id'])) {
+            $errors['item_id'] = 'Item ID cannot be blank.';
+        }
+
+        // Quantity
+        if (!is_blank($transaction['quantity'])) {
+            $errors['quantity'] = 'Please enter a minimum of 1 quantity.';
+        }
+
+        // Remarks
+        if (!is_blank($transaction['quantity'])) {
+            $errors['remarks'] = 'Please enter your remarks.';
+        }
+
+        return $errors;
     }
 
     function transaction_count() {
