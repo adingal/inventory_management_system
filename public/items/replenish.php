@@ -26,6 +26,10 @@
         if (empty($item['replenish_quantity'])) {
             $errors['replenish_quantity'] = 'Please enter a quantiy to replenish.';
         }
+        
+        if (empty($_POST['remarks'])) {
+            $errors['remarks'] = 'Remarks required.';
+        }
 
         if (empty($errors)) {
             $result = replenish_item($item);
@@ -36,13 +40,13 @@
                 $transaction['item_id'] = $id ?? '';
                 $transaction['quantity'] = $item['replenish_quantity'] ?? '';
                 $transaction['transaction_type'] = 'Replenish' ?? '';
-                $transaction['remarks'] = '';
+                $transaction['remarks'] = $_POST['remarks'] ?? '';
     
                 insert_transaction($transaction);            
                 redirect_to(url_for('/items/index.php'));
             }
         } else {
-
+            
         }
 
     }
@@ -72,7 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label for="replenish_quantity">Replenish Quantity</label>
-                            <input type="number" class="form-control" name="replenish_quantity" min="1" value="">
+                            <input type="number" class="form-control" name="replenish_quantity" min="1" value="<?php echo $item['replenish_quantity']; ?>">
                             <small class="text-danger">
                                 <?php
                                     if ($errors['replenish_quantity'] ?? '') {
@@ -81,6 +85,17 @@
                                 ?>
                             </small>                            
                         </div>
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea name="remarks" class="form-control" cols="30" rows="5"></textarea>
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['remarks'] ?? '') {
+                                        echo $errors['remarks'];
+                                    }
+                                ?>
+                            </small>                             
+                        </div>                        
                         <div class="form-group text-right">
                             <input type="submit" class="btn btn-dark" value="Replenish">
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>                            
