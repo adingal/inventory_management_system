@@ -47,14 +47,15 @@
         }
 
         $sql = "INSERT INTO items ";
-        $sql .= "(item_name, item_description, quantity, user_id, added_date) ";
+        $sql .= "(item_name, item_description, quantity, user_id, added_date, visible) ";
         $sql .= "VALUES ";
         $sql .= "(";
         $sql .= "'" . db_escape($db, $item['item_name']) . "', ";
         $sql .= "'" . db_escape($db, $item['item_description']) . "', ";
         $sql .= "'" . db_escape($db, $item['quantity']) . "', ";
         $sql .= "'" . db_escape($db, $item['user_id']) . "', ";
-        $sql .= "NOW()";
+        $sql .= "NOW(), ";
+        $sql .= "1";
         $sql .= ")";
 
         $result = mysqli_query($db, $sql);
