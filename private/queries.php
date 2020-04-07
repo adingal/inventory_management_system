@@ -16,6 +16,7 @@
         global $db;
 
         $sql = "SELECT item_id FROM items ";
+        $sql .= "WHERE visible = '1' ";
         $sql .= "ORDER BY item_id ASC";
         $result = mysqli_query($db, $sql); 
 
