@@ -21,10 +21,10 @@
 
     if (is_post()) {
         $result = delete_item($id);
-        if ($result) {
+        if ($result == true) {
             $transaction = [];
-            $transaction['item_id'] = $id ?? '';
             $transaction['user_id'] = $user_id ?? '';
+            $transaction['item_id'] = $id ?? '';
             $transaction['quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Delete' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';

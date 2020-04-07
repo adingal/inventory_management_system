@@ -23,7 +23,7 @@
 
         $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
 
-        if ($result) {
+        if ($result == true) {
             insert_transaction($transaction);
             redirect_to(url_for('/transactions/index.php'));
         }

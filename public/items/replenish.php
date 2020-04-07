@@ -30,7 +30,7 @@
         if (empty($errors)) {
             $result = replenish_item($item);
 
-            if ($result) {
+            if ($result == true) {
                 $transaction = [];
                 $transaction['user_id'] = $user_id ?? '';
                 $transaction['item_id'] = $id ?? '';
