@@ -156,7 +156,8 @@
     function item_count() {
         global $db;
 
-        $sql = "SELECT item_id FROM items";
+        $sql = "SELECT item_id FROM items ";
+        $sql .= "WHERE visible = '1'";
 
         $result = mysqli_query($db, $sql);
         $item_count = mysqli_num_rows($result);
