@@ -27,7 +27,8 @@
         global $db;
 
         $sql = "SELECT * FROM items ";
-        $sql .= "WHERE item_id = '" . db_escape($db, $id) . "'";
+        $sql .= "WHERE item_id = '" . db_escape($db, $id) . "' ";
+        $sql .= "AND visible = '1' ";
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
