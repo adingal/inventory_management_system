@@ -6,6 +6,8 @@ CREATE TABLE items (
     -- added_by VARCHAR(255) NOT NULL, -- Replace with user_id for good database design
     user_id INT(10) UNSIGNED NOT NULL,
     added_date DATETIME NOT NULL,
+    -- added visible to handle deleted items
+    visible TINYINT(1) NOT NULL,
     PRIMARY KEY (item_id),
     INDEX (added_date)
 ) ENGINE = INNODB;
