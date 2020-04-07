@@ -491,8 +491,9 @@
     function transaction_count() {
         global $db;
 
-        $sql = "SELECT transaction_id FROM transactions ";
-        $sql .= "WHERE visible = '1'";
+        $sql = "SELECT t.transaction_id as id ";
+        $sql .= "FROM transactions AS t, items AS i ";
+        $sql .= "WHERE t.item_id = i.item_id AND i.visible = '1'";
 
         $result = mysqli_query($db, $sql);
         $transaction_count = mysqli_num_rows($result);
