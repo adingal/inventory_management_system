@@ -41,11 +41,11 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>Transaction ID</th>
-                                <th>User Name</th>
                                 <th>Item Name</th>
                                 <th>Quantity</th>
                                 <th>Type</th>
                                 <th>Date</th>
+                                <th>User Name</th>
                                 <th>Remarks</th>
                             </tr>
                         </thead>
@@ -69,11 +69,11 @@
                                 ?>
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
-                                    <td><?php echo h($user_name); ?></td>
                                     <td><?php echo h($item_name); ?></td>
                                     <td><?php echo h($transaction['quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_type']); ?></td>
                                     <td><?php echo h(date_format($trans_date, 'm/d/Y H:i A')); ?></td>
+                                    <td><?php echo h($user_name); ?></td>
                                     <td><?php echo h($transaction['remarks']); ?></td>
                                 </tr>
                             <?php } ?>
