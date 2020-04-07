@@ -61,7 +61,14 @@
                             <?php
                                 while ($item = mysqli_fetch_assoc($items)) { 
                             
+                                // Replace user_id to user name
                                 $user = find_user_by_id($item['user_id']);
+
+                                // Test if visible is set to 0, do not show item
+                                if ($item['visible'] == '0') {
+                                    continue;
+                                }
+
                             ?>
                                 <tr>
                                     <td>    <?php echo h($item['item_id']);            ?></td>

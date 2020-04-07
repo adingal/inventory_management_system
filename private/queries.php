@@ -99,7 +99,8 @@
     function delete_item($id) {
         global $db;
 
-        $sql = "DELETE FROM items ";
+        $sql = "UPDATE items SET ";
+        $sql .= "visible = '0' ";
         $sql .= "WHERE item_id = '" . db_escape($db, $id) . "' ";
         $sql .= "LIMIT 1";
 
