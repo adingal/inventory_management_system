@@ -172,7 +172,7 @@
         }
         
         // Check for minimum length of characters
-        if (!has_length_greater_than($item['item_name'], 6)) {
+        if (!has_length_greater_than($item['item_name'], 5)) {
             $errors['item_min'] = 'Please enter a minimum of 6 characters.';
         }
 
