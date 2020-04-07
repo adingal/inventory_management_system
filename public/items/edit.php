@@ -11,7 +11,9 @@
 
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
-    } else if (is_post()) {
+    }
+    
+    if (is_post()) {
         $item = [];
         $item['item_id'] = $id;
         $item['item_name'] = $_POST['item_name'];
@@ -28,8 +30,7 @@
             $transaction['transaction_type'] = 'Edit' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
-            insert_transaction($transaction);            
-        } else if ($result) {
+            insert_transaction($transaction);   
             redirect_to(url_for('/items/index.php'));
         } else {
             $errors = $result;

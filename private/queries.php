@@ -463,7 +463,7 @@
     function insert_transaction($transaction) {
         global $db;         
 
-        $sql .= "INSERT INTO transactions ";
+        $sql = "INSERT INTO transactions ";
         $sql .= "(user_id, item_id, quantity, transaction_type, transaction_date, remarks) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $transaction['user_id']) . "', "; 
