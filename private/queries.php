@@ -426,6 +426,28 @@
     }
 
     // Transactions
+    function find_all_transactions() {
+        global $db;
+
+        $sql = "SELECT * FROM transactions";
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+
+        return $result;
+    }
+
+    function find_all_transactions_id() {
+        global $db;
+
+        $sql = "SELECT transaction_id FROM transactions ";
+        $sql .= "ORDER BY transaction_id ASC";        
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+
+        return $result;
+    }
+
     function insert_transaction($transaction) {
         global $db;         
 
