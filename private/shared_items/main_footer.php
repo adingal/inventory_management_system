@@ -13,3 +13,5 @@
     <script src="<?php echo url_for('/js/index.js'); ?>"></script>
 </body>
 </html>
+
+<?php db_disconnect($db); ?>

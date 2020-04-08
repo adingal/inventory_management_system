@@ -18,7 +18,8 @@
         $sql = "SELECT item_id FROM items ";
         $sql .= "WHERE visible = '1' ";
         $sql .= "ORDER BY item_id ASC";
-        $result = mysqli_query($db, $sql); 
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result); 
 
         return $result;
     }
@@ -32,6 +33,8 @@
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result); 
+        
         $item = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
         
@@ -160,6 +163,7 @@
         $sql .= "WHERE visible = '1'";
 
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
         $item_count = mysqli_num_rows($result);
         mysqli_free_result($result);
 
@@ -188,7 +192,7 @@
 
         # Item description
         // Check for minimum length of characters
-        if (!has_length_greater_than($item['item_description'], 10)) {
+        if (!has_length_greater_than($item['item_description'], 9)) {
             $errors['description_min'] = 'Please enter a minimum of 10 characters.';
         }
 
@@ -222,7 +226,8 @@
 
         $sql = "SELECT user_id FROM users ";
         $sql .= "ORDER BY user_id ASC";
-        $result = mysqli_query($db, $sql); 
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);  
 
         return $result;
     }
@@ -235,6 +240,8 @@
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result); 
+
         $user = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
 
@@ -250,6 +257,7 @@
         $sql .= "LIMIT 1";
 
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
         
         if ($result) {
             $user = mysqli_fetch_assoc($result);
@@ -322,8 +330,6 @@
         $sql .= "WHERE user_id = '" . db_escape($db, $user['user_id']) . "' ";
         $sql .= "LIMIT 1";
 
-        echo $sql;
-
         $result = mysqli_query($db, $sql);
 
         if ($result) {
@@ -359,6 +365,8 @@
         $sql = "SELECT user_id FROM users";
 
         $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+
         $user_count = mysqli_num_rows($result);
         mysqli_free_result($result);
 
@@ -418,53 +426,6 @@
     }
 
     // Transactions
-    function find_all_transactions() {
-        global $db;
-
-        $sql = "SELECT * FROM transactions";
-
-        $result = mysqli_query($db, $sql);
-
-        return $result;
-    }
-
-    function find_all_transactions_id() {
-        global $db;
-
-        $sql = "SELECT transaction_id FROM transactions ";
-        $sql .= "ORDER BY transaction_id ASC";        
-        $result = mysqli_query($db, $sql);
-
-        return $result;
-    }
-
-    function find_transaction_by_id($id) {
-        global $db;
-
-        $sql = "SELECT * FROM transactions ";
-        $sql .= "WHERE transaction_id = '" . db_escape($db, $id) . "' ";
-        $sql .= "LIMIT 1";
-
-        $result = mysqli_query($db, $sql);
-        $transaction = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-
-        // Returns associative array
-        return $transaction;
-    }
-
-    function delete_transaction($id) {
-        global $db;
-
-        $sql = "DELETE FROM transactions ";
-        $sql .= "WHERE transaction_id = '" . db_escape($db, $id) . "' ";
-        $sql .= "LIMIT 1";
-
-        $result = mysqli_query($db, $sql);
-
-        return $result;
-    }
-
     function insert_transaction($transaction) {
         global $db;         
 
