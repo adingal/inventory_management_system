@@ -402,7 +402,6 @@
             $errors['email_valid'] = 'Please enter a valid email format.';
         }
 
-        echo $user['user_type'];
         # User Type
         if (is_blank($user['user_type'])) {
             $errors['user_type_blank'] = 'User type cannot be blank.';

@@ -26,6 +26,7 @@
         $user['first_name'] = '';
         $user['last_name'] = '';
         $user['email'] = '';
+        $user['user_type'] = 'User' ?? '';
         $user['password'] = '';
         $user['confirm_password'] = '';        
     }
