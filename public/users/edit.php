@@ -5,6 +5,8 @@
 
     $page_title = 'Edit User';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
@@ -27,7 +29,9 @@
         }
     }
 
+    $user_type = ['User', 'Admin'];
     $user = find_user_by_id($id);
+    $current_user = find_user_by_id($user_id);
     $formatted_date = date_format(date_create($user['registered_date']), 'M d, Y');
 ?>
 
@@ -82,8 +86,15 @@
                         <div class="form-group">
                             <label for="user_type">User Type</label>
                             <select name="user_type" class="form-control">
-                                    <option value="User">User</option>
-                                    <option value="Admin">Admin</option>
+                                    <?php
+                                        foreach ($user_type as $type) {
+                                            echo '<option value="' . $type . '"';
+                                            if ($user['user_type'] == $type) {  
+                                                echo ' selected';
+                                            }
+                                            echo '>' . $type . '</option>'; 
+                                        }
+                                    ?>
                             </select>             
                             <small class="text-danger">
                                 <?php
