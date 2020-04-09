@@ -37,6 +37,10 @@
                             <input type="text" class="form-control" name="email" value="<?php echo h($user['email']); ?>" disabled>
                         </div>
                         <div class="form-group">
+                            <label for="user_type">User Type</label>
+                            <input type="text" class="form-control" name="user_type" value="<?php echo h($user['user_type']); ?>" disabled>
+                        </div>
+                        <div class="form-group">
                             <label for="registered_date">Registered Date</label>
                             <input type="text" class="form-control" name="registered_date" value="<?php echo h($formatted_date); ?>" disabled>
                         </div>
