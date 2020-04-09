@@ -84,16 +84,14 @@
                         <div class="form-group">
                             <label for="user_type">User Type</label>
                             <select name="user_type" class="form-control">
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
                             </select>             
                             <small class="text-danger">
                                 <?php
                                     if ($errors['user_type_blank'] ?? '') {
                                         echo $errors['user_type_blank'];
-                                    } else if ($errors['user_type_options'] ?? '') {
-                                        echo $errors['user_type_options'];
-                                    }        
+                                    }      
                                 ?>
                             </small>                                           
                         </div>
