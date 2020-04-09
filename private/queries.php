@@ -284,14 +284,15 @@
         $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
         $sql = "INSERT INTO users ";
-        $sql .= "(first_name, last_name, email, hashed_password, registered_date) ";
+        $sql .= "(first_name, last_name, email, hashed_password, registered_date, user_type) ";
         $sql .= "VALUES ";
         $sql .= "(";
         $sql .= "'" . db_escape($db, $user['first_name']) . "', ";
         $sql .= "'" . db_escape($db, $user['last_name']) . "', ";
         $sql .= "'" . db_escape($db, $user['email']) . "', ";
         $sql .= "'" . db_escape($db, $hashed_password) . "', ";
-        $sql .= "NOW()";
+        $sql .= "NOW(), ";
+        $sql .= "'" . db_escape($db, $user['user_type']) . "'";
         $sql .= ")";
 
         $result = mysqli_query($db, $sql);
@@ -399,6 +400,13 @@
             $errors['email_length'] = 'Please enter an email between 2 to 50 characters only.';
         } else if (!has_valid_email_format($user['email'])) {
             $errors['email_valid'] = 'Please enter a valid email format.';
+        }
+
+        # User Type
+        if (is_blank($user['user_type'])) {
+            $errors['user_type_blank'] = 'User type cannot be blank.';
+        } else if ($user['user_type'] != 'User' || $user['user_type'] != 'Admin') {
+            $errors['user_type_options'] = 'Unknown type of user.';
         }
 
         # If password was changed

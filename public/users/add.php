@@ -10,6 +10,7 @@
         $user['first_name'] = $_POST['first_name'] ?? '';
         $user['last_name'] = $_POST['last_name'] ?? '';
         $user['email'] = $_POST['email'] ?? '';
+        $user['user_type'] = $_POST['user_type'] ?? '';
         $user['password'] = $_POST['password'] ?? '';
         $user['confirm_password'] = $_POST['confirm_password'] ?? '';
 
@@ -79,6 +80,22 @@
                                     }         
                                 ?>
                             </small>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="user_type">User Type</label>
+                            <select name="user_type" class="form-control">
+                                    <option value="0">User</option>
+                                    <option value="1">Admin</option>
+                            </select>             
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['user_type_blank'] ?? '') {
+                                        echo $errors['user_type_blank'];
+                                    } else if ($errors['user_type_options'] ?? '') {
+                                        echo $errors['user_type_options'];
+                                    }        
+                                ?>
+                            </small>                                           
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
