@@ -15,6 +15,7 @@
         $user['first_name'] = $_POST['first_name'] ?? '';
         $user['last_name'] = $_POST['last_name'] ?? '';
         $user['email'] = $_POST['email'] ?? '';
+        $user['user_type'] = $_POST['user_type'] ?? '';
         $user['password'] = $_POST['password'] ?? '';
 
         $result = update_user($user);
@@ -78,6 +79,20 @@
                                 ?>
                             </small>                              
                         </div>
+                        <div class="form-group">
+                            <label for="user_type">User Type</label>
+                            <select name="user_type" class="form-control">
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                            </select>             
+                            <small class="text-danger">
+                                <?php
+                                    if ($errors['user_type_blank'] ?? '') {
+                                        echo $errors['user_type_blank'];
+                                    }      
+                                ?>
+                            </small>                                           
+                        </div>                        
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" value="">

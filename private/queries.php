@@ -322,7 +322,8 @@
         $sql = "UPDATE users SET ";
         $sql .= "first_name = '" . db_escape($db, $user['first_name']) . "', ";
         $sql .= "last_name = '" . db_escape($db, $user['last_name']) . "', ";
-        $sql .= "email = '" . db_escape($db, $user['email']) . "'";
+        $sql .= "email = '" . db_escape($db, $user['email']) . "', ";
+        $sql .= "user_type = '" . db_escape($db, $user['user_type']) . "' ";
 
         if ($password_sent) {
             $sql .= ", hashed_password = '" . db_escape($db, $hashed_password) . "' ";
