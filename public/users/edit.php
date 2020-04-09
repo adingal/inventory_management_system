@@ -5,8 +5,6 @@
 
     $page_title = 'Edit User';
 
-    $user_id = $_SESSION['user_id'] ?? '';
-
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
@@ -31,7 +29,6 @@
 
     $user_type = ['User', 'Admin'];
     $user = find_user_by_id($id);
-    $current_user = find_user_by_id($user_id);
     $formatted_date = date_format(date_create($user['registered_date']), 'M d, Y');
 ?>
 
