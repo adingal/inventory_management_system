@@ -5,6 +5,8 @@
 
     $page_title = 'View User';
 
+    $user_id = $_SESSION['user_id'] ?? '';
+
     $id = $_GET['id'] ?? NULL;
 
     if (is_null($id)) {
@@ -45,8 +47,20 @@
                             <input type="text" class="form-control" name="registered_date" value="<?php echo h($formatted_date); ?>" disabled>
                         </div>
                         <div class="form-group text-right">
-                            <a href="<?php echo url_for('/users/edit.php?id=' . h(u($id))); ?>" class="btn btn-dark">Edit</a>
-                            <a href="<?php echo url_for('/users/delete.php?id=' . h(u($id))); ?>" class="btn btn-dark">Delete</a>
+                            <?php
+                                // Show edit and delete button only if current user is Admin
+                                $current_user = find_user_by_id($user_id);
+
+                                if ($current_user['user_type'] == 'Admin') {
+                                    echo '<a href="';
+                                    echo url_for('/users/edit.php?id=' . h(u($id)));
+                                    echo '" class="btn btn-dark mr-1">Edit</a>';
+
+                                    echo '<a href="';
+                                    echo url_for('/users/delete.php?id=' . h(u($id)));
+                                    echo '" class="btn btn-dark">Delete</a>';
+                                }
+                            ?>
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
