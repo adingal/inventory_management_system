@@ -49,6 +49,7 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Registered Date</th>
+                                <th>Type</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,6 +60,7 @@
                                     <td><?php echo h($user['last_name']); ?></td>
                                     <td><?php echo h($user['email']); ?></td>
                                     <td><?php echo h($user['registered_date']); ?></td>
+                                    <td><?php echo h($user['user_type']); ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
