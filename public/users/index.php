@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
                                 <th>User ID</th>
