@@ -447,7 +447,8 @@
     function find_all_transactions_id() {
         global $db;
 
-        $sql = "SELECT transaction_id FROM transactions ";
+        $sql = "SELECT t.transaction_id FROM transactions AS t, items AS i ";
+        $sql .= "WHERE t.item_id = i.item_id AND i.visible = '1' ";
         $sql .= "ORDER BY transaction_id ASC";        
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
