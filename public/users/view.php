@@ -14,6 +14,9 @@
     }
 
     $user = find_user_by_id($id);
+    $current_user = find_user_by_id($user_id);
+    $user_access = ($current_user['user_type'] == 'Admin');
+     
     $formatted_date = date_format(date_create($user['registered_date']), 'M d, Y');
 ?>
 
@@ -49,9 +52,7 @@
                         <div class="form-group text-right">
                             <?php
                                 // Show edit and delete button only if current user is Admin
-                                $current_user = find_user_by_id($user_id);
-
-                                if ($current_user['user_type'] == 'Admin') {
+                                if ($user_access) {
                                     echo '<a href="';
                                     echo url_for('/users/edit.php?id=' . h(u($id)));
                                     echo '" class="btn btn-dark mr-1">Edit</a>';
@@ -59,6 +60,10 @@
                                     echo '<a href="';
                                     echo url_for('/users/delete.php?id=' . h(u($id)));
                                     echo '" class="btn btn-dark">Delete</a>';
+                                } else {
+                                    echo '<small class="text-danger mr-2">
+                                            Only admins can edit an account.
+                                          </small>';
                                 }
                             ?>
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
