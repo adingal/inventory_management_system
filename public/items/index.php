@@ -69,6 +69,7 @@
                                     continue;
                                 }
 
+                                $added_date = date_create($item['added_date']);
                             ?>
                                 <tr>
                                     <td>    <?php echo h($item['item_id']);            ?></td>
@@ -76,7 +77,7 @@
                                     <td>    <?php echo h($item['item_description']);   ?></td>
                                     <td>    <?php echo h($item['quantity']);           ?></td>
                                     <td>    <?php echo h($user['first_name'] . ' ' . $user['last_name']); ?></td>
-                                    <td>    <?php echo h($item['added_date']);         ?></td>
+                                    <td>    <?php echo h(date_format($added_date, 'm/d/Y H:i A'));        ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
