@@ -49,7 +49,7 @@
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Item ID</th>
+                                <th>ID</th>
                                 <th>Item Name</th>
                                 <th>Description</th>
                                 <th>Quantity</th>

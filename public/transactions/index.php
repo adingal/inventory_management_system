@@ -40,7 +40,7 @@
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Transaction ID</th>
+                                <th>ID</th>
                                 <th>Item Name</th>
                                 <th>Quantity</th>
                                 <th>Type</th>
