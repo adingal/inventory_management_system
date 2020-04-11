@@ -11,7 +11,13 @@
 
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
-    } 
+    }
+    
+    $item = find_item_by_id($id);
+
+    if (empty($item)) {
+        redirect_to(url_for('/items/index.php'));
+    }    
 
     if (is_post()) {
         $transaction = [];
@@ -21,19 +27,19 @@
         $transaction['transaction_type'] = 'Withdraw' ?? '';
         $transaction['remarks'] = $_POST['remarks'] ?? '';
 
-        $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
-
-        if ($result == true) {
-            insert_transaction($transaction);
-            redirect_to(url_for('/transactions/index.php'));
+        if ($transaction['quantity'] > $item['quantity']) {
+            $errors['quantity_limit'] = 'Please enter only the current available quantity.';
         }
-    }
 
-    $item = find_item_by_id($id);
-
-    if (empty($item)) {
-        redirect_to(url_for('/items/index.php'));
-    }       
+        if (empty($errors)) {
+            $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
+    
+            if ($result == true) {
+                insert_transaction($transaction);
+                redirect_to(url_for('/transactions/index.php'));
+            }
+        }
+    }     
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); ?>
@@ -55,7 +61,15 @@
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity" min="1" max="<?php echo h($item['quantity']); ?>" value="1">
-                            <small class="text-danger">Available quantity: <?php echo h($item['quantity']); ?></small>
+                            <small class="text-danger"> 
+                                <?php 
+                                    if ($errors) {
+                                        echo $errors['quantity_limit'] . '<br>';
+                                    }
+                                    
+                                    echo 'Available quantity: ' . h($item['quantity']);  
+                                ?>
+                            </small>
                         </div>
                         <div class="form-group">
                             <label for="remarks">Remarks</label>
