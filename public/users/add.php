@@ -1,10 +1,18 @@
 <?php
+    /*
+    * Add User Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Add User';
 
+    // If post request
     if (is_post()) {
         $user = [];
         $user['first_name'] = $_POST['first_name'] ?? '';
@@ -14,11 +22,14 @@
         $user['password'] = $_POST['password'] ?? '';
         $user['confirm_password'] = $_POST['confirm_password'] ?? '';
 
+        // Call insert user function
         $result = insert_user($user);
 
+        // If insert is successful
         if ($result === true) {
             redirect_to(url_for('/users/index.php'));
         } else {
+        // If not set errors array
             $errors = $result;
         }
     } else {
@@ -32,7 +43,7 @@
     }
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
     <div id="add_user" class="py-5">
@@ -46,6 +57,7 @@
                             <input type="text" class="form-control" name="first_name" value="<?php echo h($user['first_name']); ?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for first name
                                     if ($errors['first_name_blank'] ?? '') {
                                         echo $errors['first_name_blank'];
                                     } else if ($errors['first_name_length'] ?? '') {
@@ -59,6 +71,7 @@
                             <input type="text" class="form-control" name="last_name" value="<?php echo h($user['last_name']); ?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for last name
                                     if ($errors['last_name_blank'] ?? '') {
                                         echo $errors['last_name_blank'];
                                     } else if ($errors['last_name_length'] ?? '') {
@@ -72,6 +85,7 @@
                             <input type="email" class="form-control" name="email" value="<?php echo h($user['email']); ?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for email
                                     if ($errors['email_blank'] ?? '') {
                                         echo $errors['email_blank'];
                                     } else if ($errors['email_length'] ?? '') {
@@ -90,6 +104,7 @@
                             </select>             
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for user type
                                     if ($errors['user_type_blank'] ?? '') {
                                         echo $errors['user_type_blank'];
                                     }      
@@ -101,6 +116,7 @@
                             <input type="password" class="form-control" name="password" value="<?php echo h($user['password']); ?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for password
                                     if ($errors['password_blank'] ?? '') {
                                         echo $errors['password_blank'];
                                     } else if ($errors['password_length'] ?? '') {
@@ -114,6 +130,7 @@
                             <input type="password" class="form-control" name="confirm_password" value="<?php echo h($user['confirm_password']); ?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for confirm password
                                     if ($errors['confirm_password_blank'] ?? '') {
                                         echo $errors['confirm_password_blank'];
                                     } else if ($errors['confirm_password_length'] ?? '') {
@@ -129,10 +146,10 @@
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- add_user -->
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>

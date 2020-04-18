@@ -53,9 +53,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-    </div>
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </div> <!-- home -->
+    </div> <!-- content -->
     
 <?php include('../private/shared_items/main_footer.php'); ?>

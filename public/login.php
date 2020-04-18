@@ -85,9 +85,9 @@
                         </small>                                 
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- login -->
+</div> <!-- content -->
 
 <?php include(SHARED_PATH . '/main_footer.php'); ?>
