@@ -223,7 +223,12 @@
         return $errors;
     }
 
-    // Users
+
+    /**
+     * Users
+     */
+
+    // Find all users returns result set 
     function find_all_users() {
         global $db;
 
@@ -234,6 +239,7 @@
         return $result;
     }
     
+    // Find all users id returns result set
     function find_all_users_id() {
         global $db;
 
@@ -245,6 +251,7 @@
         return $result;
     }
     
+    // Find all user by id returns associative array
     function find_user_by_id($id) {
         global $db;
 
@@ -262,6 +269,7 @@
         return $user;
     }
 
+    // Find user by email returns associative array
     function find_user_by_email($email) {
         global $db;
 
@@ -285,6 +293,7 @@
         }
     }
 
+    // Insert user returns boolean
     function insert_user($user) {
         global $db;
 
@@ -319,6 +328,7 @@
         }
     }
 
+    // Update user returns boolean
     function update_user($user) {
         global $db;
 
@@ -356,6 +366,7 @@
         }        
     }
 
+    // Delete user returns boolean
     function delete_user($id) {
         global $db;
 
@@ -374,6 +385,7 @@
         }        
     }
 
+    // Count all user returns user count
     function user_count() {
         global $db;
 
@@ -388,6 +400,7 @@
         return $user_count;
     }
     
+    // Validate user returns array
     function validate_user($user, $options=[]) {
         $errors = [];
 
@@ -445,7 +458,11 @@
         return $errors;
     }
 
-    // Transactions
+    /**
+     * Transactions
+     */
+
+    // Find all transactions returns result set
     function find_all_transactions() {
         global $db;
 
@@ -457,6 +474,7 @@
         return $result;
     }
 
+    // Find all transactions id returns result set
     function find_all_transactions_id() {
         global $db;
 
@@ -469,6 +487,7 @@
         return $result;
     }
 
+    // Insert transaction returns boolean
     function insert_transaction($transaction) {
         global $db;         
 
@@ -493,6 +512,7 @@
         }       
     }
 
+    // Count all transaction with active item id returns transaction count
     function transaction_count() {
         global $db;
 
