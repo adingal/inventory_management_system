@@ -1,14 +1,24 @@
 <?php
+    /*
+    * Add User Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Add Item';
 
+    // Set user id
     $user_id = $_SESSION['user_id'] ?? '';
 
+    // Call find user by id
     $user = find_user_by_id($user_id);
 
+    // If post request
     if (is_post()) {
         $item = [];
         $item['item_name'] = $_POST['item_name'];
@@ -16,8 +26,10 @@
         $item['quantity'] = $_POST['quantity'];
         $item['user_id'] = $user_id;
 
+        // Call insert item function
         $result = insert_item($item);
 
+        // If insert is successful
         if ($result === true) {
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
@@ -26,9 +38,11 @@
             $transaction['transaction_type'] = 'Add' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
+            // Call insert transaction then redirect
             insert_transaction($transaction);
             redirect_to(url_for('/items/index.php'));
         } else {
+        // If not set errors array
             $errors = $result;
         }
     } else {
@@ -40,7 +54,7 @@
     }
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
 
@@ -55,6 +69,7 @@
                             <input type="text" class="form-control" name="item_name" value="<?php echo h($item['item_name']);?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for item name
                                     if ($errors['item_name'] ?? '') {
                                         echo $errors['item_name'];
                                     } else if ($errors['item_min'] ?? '') {
@@ -70,6 +85,7 @@
                             <textarea class="form-control" name="description" cols="30" rows="5"><?php echo h($item['item_description']);?></textarea>
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for description
                                     if ($errors['description_max'] ?? '') {
                                         echo $errors['description_max'];
                                     } else if ($errors['description_min'] ?? '') {
@@ -83,6 +99,7 @@
                             <input type="number" class="form-control" name="quantity" min="1" max="100" value="<?php echo h($item['quantity']);?>">
                             <small class="text-danger">
                                 <?php
+                                    // If there are errors for quantity
                                     if ($errors['quantity'] ?? '') {
                                         echo $errors['quantity'];
                                     }
@@ -102,11 +119,11 @@
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- add_item -->
 
-</div>
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>
