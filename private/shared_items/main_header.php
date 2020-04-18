@@ -1,4 +1,8 @@
-<?php $page_title = $page_title ?? ''; ?>
+<?php
+    $page_title = $page_title ?? '';
+
+    $user_id = $_SESSION['user_id'] ?? '';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +26,7 @@
                 <?php if (is_logged_in()) { ?>
                     <div id="navbarNav" class="collapse navbar-collapse flex-column">
                         <div class="d-flex ml-auto py-1 pr-md-1">
-                            <a class="nav-link text-light mr-2 p-md-1" href="#">
+                            <a class="nav-link text-light mr-2 p-md-1" href="<?php echo url_for('/users/view.php?id=' . h(u($user_id))); ?>">
                                 <i class="fa fa-user"></i> <?php echo h($_SESSION['first_name']); ?>
                             </a>
                             <a class="ml-auto nav-link text-light p-1" href="<?php echo url_for('/logout.php'); ?>">
