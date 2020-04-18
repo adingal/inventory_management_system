@@ -1,27 +1,41 @@
 <?php
+    /*
+    * View Item Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'View Item';
 
+    // Set id
     $id = $_GET['id'] ?? NULL;
 
+    // If id is null
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
 
+    // Call find item by id function
     $item = find_item_by_id($id);
 
+    // If item is empty
     if (empty($item)) {
         redirect_to(url_for('/items/index.php'));
     }
 
+    // Call find user by id function
     $user = find_user_by_id($item['user_id']);
+
+    // Format added date
     $formatted_date = date_format(date_create($item['added_date']), 'M d, Y');
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
 
@@ -55,11 +69,11 @@
                             <a href="<?php echo url_for('/items/delete.php?id=' . h(u($id))); ?>" class="btn btn-dark">Delete</a>
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- view_item -->
 
-</div>
+</div> <!-- content-->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>
