@@ -9,7 +9,9 @@ const el = {
 };
 
 
-/* HELPER FUNCTIONS */
+/*
+* HELPER FUNCTIONS
+*/
 
 // Remove trailing id parameters
 function handleHref(element) {
@@ -39,7 +41,9 @@ function setBtnDefaultId(element, currentId) {
 }
 
 
-/* IIFE's */
+/*
+* IIFE's
+*/
 
 // Set href for edit button on items index page depending on selected id
 (function setItemsViewBtn() {
@@ -59,7 +63,7 @@ function setBtnDefaultId(element, currentId) {
 // Set href for withdraw button on items index page depending on selected id
 (function setItemsWithdrawBtn() {
     
-    // If actions view button is present
+    // If actions withdraw button is present
     if (el.actionsWithdrawBtn) {
         let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
         setBtnDefaultId(el.actionsWithdrawBtn, currentId);
@@ -74,7 +78,7 @@ function setBtnDefaultId(element, currentId) {
 // Set href for replenish button on items index page depending on selected id
 (function setItemsReplenishBtn() {
     
-    // If actions view button is present
+    // If actions replenish button is present
     if (el.actionsReplenishBtn) {
         let currentId = el.selectedId.options[el.selectedId.selectedIndex].value;
         setBtnDefaultId(el.actionsReplenishBtn, currentId);
