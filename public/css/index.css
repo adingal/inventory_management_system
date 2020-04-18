@@ -5,6 +5,7 @@ html {
     min-height: 100%;}
 
 body {
+    background: url('../img/country-quilt.png') repeat center center;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 400;
