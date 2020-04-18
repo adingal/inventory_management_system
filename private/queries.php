@@ -223,23 +223,6 @@
         return $errors;
     }
 
-    // Find current item quantity returns associative array
-    function find_item_current_quantity($id) {
-        global $db;
-
-        $sql = "SELECT quantity FROM items ";
-        $sql .= "WHERE item_id = '" . db_escape($db, $id); "'";
-
-        $result = mysqli_query($db, $sql);
-        confirm_result_set($result);
-
-        $item = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-
-        // Return associative array
-        return $item;
-    }
-
 
     /**
      * Users
@@ -507,19 +490,15 @@
     // Insert transaction returns boolean
     function insert_transaction($transaction) {
         global $db;
-        
-        $transaction['item_id'] = $transaction['item_id'] ?? '';
-
-        $prev_quantity = find_item_current_quantity($transaction['item_id']);
 
         $sql = "INSERT INTO transactions ";
-        $sql .= "(user_id, item_id, previous_quantity, withdrawn_quantity, remaining_quantity, transaction_type, transaction_date, remarks) ";
+        $sql .= "(user_id, item_id, previous_quantity, quantity, remaining_quantity, transaction_type, transaction_date, remarks) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $transaction['user_id']) . "', "; 
         $sql .= "'" . db_escape($db, $transaction['item_id']) . "', "; 
-        $sql .= "'" . db_escape($db, $prev_quantity) . "', "; 
-        $sql .= "'" . db_escape($db, $transaction['withdrawn_quantity']) . "', "; 
-        $sql .= "'" . db_escape($db, ($prev_quantity - $transaction['withdrawn_quantity'])) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['previous_quantity']) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['quantity']) . "', "; 
+        $sql .= "'" . db_escape($db, $transaction['remaining_quantity']) . "', "; 
         $sql .= "'" . db_escape($db, $transaction['transaction_type']) . "', ";  
         $sql .= "NOW(), "; 
         $sql .= "'" . db_escape($db, $transaction['remarks']) . "')";

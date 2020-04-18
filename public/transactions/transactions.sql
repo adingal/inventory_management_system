@@ -6,7 +6,7 @@ CREATE TABLE transactions (
     -- withdrawn_quantity INT UNSIGNED NOT NULL, -- Replace with quantity and add transaction type
     -- add previous and remaining quantity
     previous_quantity INT UNSIGNED NOT NULL,
-    withdrawn_quantity INT UNSIGNED NOT NULL,
+    quantity INT UNSIGNED NOT NULL,
     remaining_quantity INT UNSIGNED NOT NULL,
     transaction_type CHAR(10) NOT NULL,
     transaction_date DATETIME NOT NULL,
