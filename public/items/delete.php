@@ -1,26 +1,42 @@
 <?php
+    /*
+    * Delete Item Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Delete Item';
 
+    // Set user id
     $user_id = $_SESSION['user_id'] ?? '';
 
+    // Set id
     $id = $_GET['id'] ?? NULL;
 
+    // If id is null
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
 
+    // Call find item by id function
     $item = find_item_by_id($id);
 
+    // If item is empty
     if (empty($item)) {
         redirect_to(url_for('/items/index.php'));
     }      
 
+    // If post request
     if (is_post()) {
+        // Call delete item function
         $result = delete_item($id);
+
+        // If delete is successful
         if ($result == true) {
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
@@ -29,13 +45,14 @@
             $transaction['transaction_type'] = 'Delete' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
+            // Call insert transaction function and redirect
             insert_transaction($transaction);
             redirect_to(url_for('/items/index.php'));
         }
     }  
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
     <div id="delete_item" class="py-5">
@@ -61,10 +78,10 @@
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>                        
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- delete_item -->
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>

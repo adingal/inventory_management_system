@@ -1,6 +1,6 @@
 <?php
     /*
-    * Add User Page  
+    * Add Item Page  
     */
 
     // Require init file
