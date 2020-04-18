@@ -1,20 +1,35 @@
 <?php
+    /*
+    * Delete User Page  
+    */
+
+    // Require init file    
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Delete User';
 
+    // Set $id
     $id = $_GET['id'] ?? NULL;
+
+    // If $id is null
     if (is_null($id)) {
         redirect_to(url_for('/users/index.php'));
     }
 
+    // Call find user by id function
     $user = find_user_by_id($id);
 
+    // If post request
     if (is_post()) {
+
+        // Call delete user function
         $result = delete_user($id);
 
+        // If delete is successful
         if ($result) {
             redirect_to(url_for('/users/index.php'));
         }
@@ -22,7 +37,7 @@
 
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php') ?>
+<?php include(SHARED_PATH . '/main_header.php') // Include header file ?>
 
 <div id="content">
     <div id="delete_user" class="py-5">
@@ -44,10 +59,10 @@
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- delete_user -->
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php') ?>
+<?php include(SHARED_PATH . '/main_footer.php') // Include footer file ?>
