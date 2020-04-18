@@ -1,15 +1,25 @@
 <?php
+    /*
+    * Add User Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Transactions';
 
+    // Call find all transactions function
     $transactions = find_all_transactions();
+
+    // Call find all transactions id function
     $transaction_ids = find_all_transactions_id();
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
     <div id="actions" class="pt-5 pb-2 mt-3">
@@ -21,18 +31,24 @@
                             <label class="input-group-text" for="selected_item">Transaction ID</label>
                         </div>
                         <select class="custom-select" id="selected_id">
+
+                            <!-- Loop on all transaction id and create options -->
                             <?php
                                 while ($transaction_id = mysqli_fetch_row($transaction_ids)) {
                                     echo '<option value="' . h($transaction_id[0]) . '">';
                                     echo h($transaction_id[0]) . '</option>';
                                 }
+
+                                // Free up resources
+                                mysqli_free_result($transaction_ids);
                             ?>
+
                         </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div> <!-- input-group -->
+                </div> <!-- id_options -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- actions -->
     <div id="transactions">
         <div class="container">
             <div class="row">
@@ -50,6 +66,8 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                            <!-- Loop on all transactions and create row -->
                             <?php 
                                 while ($transaction = mysqli_fetch_assoc($transactions)) {
 
@@ -76,14 +94,19 @@
                                     <td><?php echo h($user_name); ?></td>
                                     <td><?php echo h($transaction['remarks']); ?></td>
                                 </tr>
-                            <?php } ?>
+                            <?php
+                                }
+                                
+                                // Free up resources
+                                mysqli_free_result($transactions);    
+                            ?>
+
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- transactions -->
+</div> <!-- content -->
 
-<?php mysqli_free_result($transactions); ?>
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>
