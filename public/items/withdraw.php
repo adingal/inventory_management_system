@@ -1,24 +1,37 @@
 <?php
+    /*
+    * Withdraw Item Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Withdraw Item';
 
+    // Set id
     $id = $_GET['id'] ?? NULL;
 
+    // Set user id
     $user_id = $_SESSION['user_id'];
 
+    // If id is null
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
     
+    // Call find item by id function
     $item = find_item_by_id($id);
 
+    // If item is empty
     if (empty($item)) {
         redirect_to(url_for('/items/index.php'));
     }    
 
+    // If post request
     if (is_post()) {
         $transaction = [];
         $transaction['user_id'] = $user_id ?? '';
@@ -27,14 +40,19 @@
         $transaction['transaction_type'] = 'Withdraw' ?? '';
         $transaction['remarks'] = $_POST['remarks'] ?? '';
 
+        // If withdraw quantity is greater than the current inventory
         if ($transaction['quantity'] > $item['quantity']) {
             $errors['quantity_limit'] = 'Please enter only the current available quantity.';
         }
 
+        // If errors is empty
         if (empty($errors)) {
+            // Call withdraw item function
             $result = withdraw_item($transaction['item_id'], $transaction['quantity']);
     
+            // If withdraw is successful
             if ($result == true) {
+                // Call insert transaction and redirect
                 insert_transaction($transaction);
                 redirect_to(url_for('/transactions/index.php'));
             }
@@ -42,7 +60,7 @@
     }     
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
     <div id="withdraw_item" class="py-5">
@@ -62,7 +80,8 @@
                             <label for="quantity">Quantity</label>
                             <input type="number" class="form-control" name="quantity" min="1" max="<?php echo h($item['quantity']); ?>" value="1">
                             <small class="text-danger"> 
-                                <?php 
+                                <?php
+                                    // If there are errors for quantity limit 
                                     if ($errors) {
                                         echo $errors['quantity_limit'] . '<br>';
                                     }
@@ -80,11 +99,11 @@
                             <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-dark" data-dismiss="modal">Cancel</a>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- withdraw_item -->
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>
 
