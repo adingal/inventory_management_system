@@ -37,7 +37,7 @@
         global $db;
 
         $sql = "SELECT * FROM items ";
-        $sql .= "WHERE item_name = '" . db_escape($db, to_uppercase($item_name)) . "' ";
+        $sql .= "WHERE item_name = '" . db_escape($db, strtoupper($item_name)) . "' ";
         $sql .= "AND item_id != '" . db_escape($db, $item_id) . "'";
 
         $item_set = mysqli_query($db, $sql);

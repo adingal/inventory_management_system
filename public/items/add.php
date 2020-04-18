@@ -21,7 +21,7 @@
     // If post request
     if (is_post()) {
         $item = [];
-        $item['item_name'] = $_POST['item_name'];
+        $item['item_name'] = strtoupper($_POST['item_name']);
         $item['item_description'] = $_POST['description'];
         $item['quantity'] = $_POST['quantity'];
         $item['user_id'] = $user_id;
