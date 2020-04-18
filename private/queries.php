@@ -1,7 +1,11 @@
 <?php
     # Note: Use double quotes for added protection 
 
-    // Items
+    /*
+    * Items
+    */
+
+    // Find all items returns result set
     function find_all_items() {
         global $db;
 
@@ -12,6 +16,7 @@
         return $result;
     }
 
+    // Find all items id returns result set
     function find_all_items_id() {
         global $db;
 
@@ -24,6 +29,7 @@
         return $result;
     }
 
+    // Find all item by id returns associative array
     function find_item_by_id($id) {
         global $db;
 
@@ -42,6 +48,7 @@
         return $item;
     }
 
+    // Insert item returns boolean
     function insert_item($item) {
         global $db;
 
@@ -74,6 +81,7 @@
         }
     }
 
+    // Update item returns boolean
     function update_item($item) {
         global $db;
 
@@ -101,6 +109,7 @@
         }
     }
 
+    // Delete item returns boolean
     function delete_item($id) {
         global $db;
 
@@ -120,6 +129,7 @@
         }
     }
 
+    // Withdraw item returns boolean
     function withdraw_item($item_id, $quantity) {
         global $db;
 
@@ -138,6 +148,7 @@
         }
     }
 
+    // Replenish item returns boolean
     function replenish_item($item) {
         global $db;
 
@@ -156,6 +167,7 @@
         }
     }
 
+    // Count all active items returns item count
     function item_count() {
         global $db;
 
@@ -170,6 +182,7 @@
         return $item_count;
     }
 
+    // Validate item returns array
     function validate_item($item) {
         $errors = [];        
 
@@ -456,25 +469,6 @@
         return $result;
     }
 
-/*  Unused function
-    function find_transaction_by_id($id) {
-        global $db;
-
-        $sql = "SELECT * FROM transactions ";
-        $sql .= "WHERE transaction_id = '" . db_escape($db, $id) . "' ";
-        $sql .= "LIMIT 1";
-
-        $result = mysqli_query($db, $sql);
-        confirm_result_set($result);
-
-        $transaction = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-
-        // Returns associative array
-        return $transaction;
-    }
-*/
-
     function insert_transaction($transaction) {
         global $db;         
 
@@ -512,5 +506,24 @@
 
         return $transaction_count;
     }
+
+/*  Unused function
+    function find_transaction_by_id($id) {
+        global $db;
+
+        $sql = "SELECT * FROM transactions ";
+        $sql .= "WHERE transaction_id = '" . db_escape($db, $id) . "' ";
+        $sql .= "LIMIT 1";
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+
+        $transaction = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+
+        // Returns associative array
+        return $transaction;
+    }
+*/    
     
 ?>
