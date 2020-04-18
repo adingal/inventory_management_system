@@ -1,6 +1,8 @@
 <?php
+    // Set page title
     $page_title = $page_title ?? '';
 
+    // Set user id
     $user_id = $_SESSION['user_id'] ?? '';
 ?>
 
@@ -46,5 +48,5 @@
                         </ul>
                     </div>
                 <?php } ?>
-        </div>
-    </nav>
+        </div> <!-- container -->
+    </nav> <!-- main-header -->

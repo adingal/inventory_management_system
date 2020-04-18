@@ -14,4 +14,4 @@
 </body>
 </html>
 
-<?php db_disconnect($db); ?>
+<?php db_disconnect($db); // Disconnect active database connection ?>
