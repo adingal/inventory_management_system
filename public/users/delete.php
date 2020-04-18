@@ -12,10 +12,10 @@
     // Set page title
     $page_title = 'Delete User';
 
-    // Set $id
+    // Set id
     $id = $_GET['id'] ?? NULL;
 
-    // If $id is null
+    // If id is null
     if (is_null($id)) {
         redirect_to(url_for('/users/index.php'));
     }

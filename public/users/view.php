@@ -1,26 +1,42 @@
 <?php
+    /*
+    * View User Page  
+    */
+
+    // Require init file
     require_once('../../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'View User';
 
+    // Set user id
     $user_id = $_SESSION['user_id'] ?? '';
 
+    // Set id
     $id = $_GET['id'] ?? NULL;
 
+    // If id is null
     if (is_null($id)) {
         redirect_to(url_for('/users/index.php'));
     }
 
+    // Call find user by id function
     $user = find_user_by_id($id);
+
+    // Call find user by id function
     $current_user = find_user_by_id($user_id);
+
+    // Check current user type
     $user_access = ($current_user['user_type'] == 'Admin');
-     
+    
+    // Format registered date
     $formatted_date = date_format(date_create($user['registered_date']), 'M d, Y');
 ?>
 
-<?php include(SHARED_PATH . '/main_header.php'); ?>
+<?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
 
 <div id="content">
     <div id="view_user" class="py-5">
@@ -69,10 +85,10 @@
                             <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-dark">Cancel</a>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> <!-- col-md-6 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- view_user -->
+</div> <!-- content -->
 
-<?php include(SHARED_PATH . '/main_footer.php'); ?>
+<?php include(SHARED_PATH . '/main_footer.php'); // Include footer file ?>
