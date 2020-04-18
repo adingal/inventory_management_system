@@ -1,16 +1,28 @@
 <?php
+    /*
+    * Main Index Page
+    */
+
+    // Require init file
     require_once('../private/init.php');
 
+    // Require login
     require_login();
 
+    // Set page title
     $page_title = 'Inventory Management System';
 
+    // Call item count function
     $item_count = item_count();
+
+    // Call user count function
     $user_count = user_count();
+
+    // Call transaction count function
     $transaction_count = transaction_count();
 ?>
 
-<?php include('../private/shared_items/main_header.php'); ?>
+<?php include('../private/shared_items/main_header.php'); // Include header file ?>
 
     <div id="content">
             <div id="home" class="mt-5">
@@ -28,7 +40,7 @@
                                     <a href="<?php echo url_for('/items/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- col-md-4 -->
                         <div class="col-md-4">
                             <div class="card bg-success text-center text-white mb-3">
                                 <div class="card-body">
@@ -40,7 +52,7 @@
                                     <a href="<?php echo url_for('/transactions/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- col-md-4 -->
                         <div class="col-md-4">
                             <div class="card bg-danger text-center text-white mb-3">
                                 <div class="card-body">
@@ -52,10 +64,10 @@
                                     <a href="<?php echo url_for('/users/index.php'); ?>" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- col-md-4 -->
                     </div> <!-- row -->
                 </div> <!-- container -->
             </div> <!-- home -->
     </div> <!-- content -->
     
-<?php include('../private/shared_items/main_footer.php'); ?>
+<?php include('../private/shared_items/main_footer.php'); // Include footer file ?>
