@@ -14,10 +14,6 @@ body {
 #main-header {
     min-height: 80px;}
 
-#content .thead-dark {
-    font-family: 'Open Sans', 'Raleway', Arial, Helvetica, sans-serif;
-}
-
 #main-footer {
     position: absolute;
     bottom: 0;

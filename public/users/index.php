@@ -60,12 +60,12 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Registered Date</th>
-                                <th>Type</th>
+                                <th class="font-weight-normal">ID</th>
+                                <th class="font-weight-normal">First Name</th>
+                                <th class="font-weight-normal">Last Name</th>
+                                <th class="font-weight-normal">Email</th>
+                                <th class="font-weight-normal">Registered Date</th>
+                                <th class="font-weight-normal">Type</th>
                             </tr>
                         </thead>
                         <tbody>

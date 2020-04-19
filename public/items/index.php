@@ -65,12 +65,12 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>Item Name</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Added By</th>
-                                <th>Added Date</th>
+                                <th class="font-weight-normal">ID</th>
+                                <th class="font-weight-normal">Item Name</th>
+                                <th class="font-weight-normal">Description</th>
+                                <th class="font-weight-normal">Quantity</th>
+                                <th class="font-weight-normal">Added By</th>
+                                <th class="font-weight-normal">Added Date</th>
                             </tr>
                         </thead>
                         <tbody>

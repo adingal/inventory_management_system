@@ -56,15 +56,15 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>Item Name</th>
-                                <th>Previous Qty</th>
-                                <th>Quantity</th>
-                                <th>Remaining Qty</th>
-                                <th>Type</th>
-                                <th>Date</th>
-                                <th>User Name</th>
-                                <th>Remarks</th>
+                                <th class="font-weight-normal">ID</th>
+                                <th class="font-weight-normal">Item Name</th>
+                                <th class="font-weight-normal">Previous Qty</th>
+                                <th class="font-weight-normal">Quantity</th>
+                                <th class="font-weight-normal">Remaining Qty</th>
+                                <th class="font-weight-normal">Type</th>
+                                <th class="font-weight-normal">Date</th>
+                                <th class="font-weight-normal">User Name</th>
+                                <th class="font-weight-normal">Remarks</th>
                             </tr>
                         </thead>
                         <tbody>
