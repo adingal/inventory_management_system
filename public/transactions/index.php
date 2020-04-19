@@ -90,9 +90,9 @@
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
                                     <td><?php echo h($item_name); ?></td>
-                                    <td><?php echo h($transaction['previous_quantity']); ?></td>
-                                    <td><?php echo h($transaction['quantity']); ?></td>
-                                    <td><?php echo h($transaction['remaining_quantity']); ?></td>
+                                    <td class="text-center"><?php echo h($transaction['previous_quantity']); ?></td>
+                                    <td class="text-center"><?php echo h($transaction['quantity']); ?></td>
+                                    <td class="text-center"><?php echo h($transaction['remaining_quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_type']); ?></td>
                                     <td><?php echo h(date_format($trans_date, 'm/d/Y H:i A')); ?></td>
                                     <td><?php echo h($user_name); ?></td>
