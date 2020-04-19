@@ -41,7 +41,9 @@
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
             $transaction['item_id'] = $id ?? '';
-            $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['previous_quantity'] = $item['quantity'] ?? '';
+            $transaction['quantity'] = 0 ?? '';
+            $transaction['remaining_quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Delete' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
