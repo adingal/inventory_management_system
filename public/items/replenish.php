@@ -31,6 +31,8 @@
         redirect_to(url_for('/items/index.php'));
     }
 
+    $current_quantity = $item['quantity'] ?? 0;
+
     // If post request
     if (is_post()) {
         $errors = [];
@@ -52,7 +54,9 @@
                 $transaction = [];
                 $transaction['user_id'] = $user_id ?? '';
                 $transaction['item_id'] = $id ?? '';
+                $transaction['previous_quantity'] = $current_quantity ?? '';
                 $transaction['quantity'] = $item['replenish_quantity'] ?? '';
+                $transaction['remaining_quantity'] = $current_quantity + $item['replenish_quantity'] ?? '';
                 $transaction['transaction_type'] = 'Replenish' ?? '';
                 $transaction['remarks'] = $_POST['remarks'] ?? '';
     
