@@ -58,7 +58,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Item Name</th>
+                                <th>Previous Qty</th>
                                 <th>Quantity</th>
+                                <th>Remaining Qty</th>
                                 <th>Type</th>
                                 <th>Date</th>
                                 <th>User Name</th>
@@ -88,7 +90,9 @@
                                 <tr>
                                     <td><?php echo h($transaction['transaction_id']); ?></td>
                                     <td><?php echo h($item_name); ?></td>
+                                    <td><?php echo h($transaction['previous_quantity']); ?></td>
                                     <td><?php echo h($transaction['quantity']); ?></td>
+                                    <td><?php echo h($transaction['remaining_quantity']); ?></td>
                                     <td><?php echo h($transaction['transaction_type']); ?></td>
                                     <td><?php echo h(date_format($trans_date, 'm/d/Y H:i A')); ?></td>
                                     <td><?php echo h($user_name); ?></td>
