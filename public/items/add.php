@@ -34,7 +34,9 @@
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
             $transaction['item_id'] = mysqli_insert_id($db) ?? '';
-            $transaction['previous_quantity'] = $item['quantity'] ?? '';
+            $transaction['previous_quantity'] = 0 ?? '';
+            $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['remaining_quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Add' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
