@@ -22,6 +22,16 @@
     if (is_null($id)) {
         redirect_to(url_for('/items/index.php'));
     }
+
+    // Call find item by id function
+    $item = find_item_by_id($id);
+
+    // If item is empty
+    if (empty($item)) {
+        redirect_to(url_for('/items/index.php'));
+    }
+    
+    $current_quantity = $item['quantity'] ?? 0;
     
     // If post request
     if (is_post()) {
@@ -39,7 +49,9 @@
             $transaction = [];
             $transaction['user_id'] = $user_id ?? '';
             $transaction['item_id'] = $id ?? '';
+            $transaction['previous_quantity'] = $current_quantity ?? '';
             $transaction['quantity'] = $item['quantity'] ?? '';
+            $transaction['remaining_quantity'] = $item['quantity'] ?? '';
             $transaction['transaction_type'] = 'Edit' ?? '';
             $transaction['remarks'] = $_POST['remarks'] ?? '';
 
@@ -50,14 +62,6 @@
         // If not set errors array
             $errors = $result;
         }
-    }
-    
-    // Call find item by id function
-    $item = find_item_by_id($id);
-
-    // If item is empty
-    if (empty($item)) {
-        redirect_to(url_for('/items/index.php'));
     }
 
     // Call find user by id function
