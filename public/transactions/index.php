@@ -13,10 +13,10 @@
     $page_title = 'Transactions';
 
     // Call find all transactions function
-    $transactions = find_all_transactions();
+    $transactions = find_all_transactions(0,10);
 
     // Call find all transactions id function
-    $transaction_ids = find_all_transactions_id();
+    $transaction_ids = find_all_transactions_id(0,5);
 
     // Set number of records to display
     $display_count = 10;

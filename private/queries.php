@@ -463,10 +463,12 @@
      */
 
     // Find all transactions returns result set
-    function find_all_transactions() {
+    // Added start and limit for pagination
+    function find_all_transactions($start, $limit) {
         global $db;
 
-        $sql = "SELECT * FROM transactions";
+        $sql = "SELECT * FROM transactions ";
+        $sql .= "LIMIT $start, $limit";
 
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
@@ -475,12 +477,14 @@
     }
 
     // Find all transactions id returns result set
-    function find_all_transactions_id() {
+    // Added start and limit for pagination
+    function find_all_transactions_id($start, $limit) {
         global $db;
 
         $sql = "SELECT t.transaction_id FROM transactions AS t, items AS i ";
         $sql .= "WHERE t.item_id = i.item_id AND i.visible = '1' ";
-        $sql .= "ORDER BY transaction_id ASC";        
+        $sql .= "ORDER BY transaction_id ASC ";        
+        $sql .= "LIMIT $start, $limit";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
 
