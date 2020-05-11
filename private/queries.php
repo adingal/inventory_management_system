@@ -467,6 +467,8 @@
     function find_all_transactions($start, $limit) {
         global $db;
 
+        $start++;
+
         $sql = "SELECT * FROM transactions ";
         $sql .= "LIMIT $start, $limit";
 
