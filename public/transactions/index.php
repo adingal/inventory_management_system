@@ -17,6 +17,39 @@
 
     // Call find all transactions id function
     $transaction_ids = find_all_transactions_id();
+
+    // Set number of records to display
+    $display_count = 10;
+
+    // If page is set and is numeric
+    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+
+        $pages = $_GET['page'];
+
+    } else {
+
+        // Get total records to display
+        $records = transaction_count();
+
+        // Set the number of pages to display
+        if ($records > $display_count) {
+            $pages = ceil($records / $display_count);
+        } else {
+            $pages = 1;
+        }
+
+    }
+
+    // Determine start of query
+    if (isset($_GET['start']) && is_numeric($_GET['start'])) {
+
+        $start = $_GET['start'];
+
+    } else {
+
+        $start = 0;
+
+    }
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
@@ -108,6 +141,9 @@
                         </tbody>
                     </table>
                 </div> <!-- col -->
+            </div> <!-- row -->
+            <div class="row">
+            
             </div> <!-- row -->
         </div> <!-- container -->
     </div> <!-- transactions -->
