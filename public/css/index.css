@@ -38,6 +38,10 @@ body {
 #withdraw_item .btn,
 #replenish_item .btn {
     min-width: 82px;}
+
+#pagination a,
+#pagination span {
+    font-size: 20px;}
     
 @media (max-width: 768px) {
     #actions .btn {

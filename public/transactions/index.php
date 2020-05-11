@@ -12,12 +12,6 @@
     // Set page title
     $page_title = 'Transactions';
 
-    // Call find all transactions function
-    $transactions = find_all_transactions(0,10);
-
-    // Call find all transactions id function
-    $transaction_ids = find_all_transactions_id(0,5);
-
     // Set number of records to display
     $display_count = 10;
 
@@ -50,6 +44,12 @@
         $start = 0;
 
     }
+
+    // Call find all transactions function
+    $transactions = find_all_transactions($start, $display_count);
+
+    // Call find all transactions id function
+    $transaction_ids = find_all_transactions_id($start, $display_count);    
 ?>
 
 <?php include(SHARED_PATH . '/main_header.php'); // Include header file ?>
@@ -143,7 +143,45 @@
                 </div> <!-- col -->
             </div> <!-- row -->
             <div class="row">
-            
+                <?php
+
+                    // If there are more pages
+                    if ($pages > 1) {
+
+                        echo '<div id="pagination" class="col-sm-6 mr-auto py-2">';
+
+                        // Determine the current page
+                        $current_page = ($start / $display_count) + 1;
+
+                        // If not the first page add a previous link
+                        if ($current_page != 1) {
+                            echo '<a href="' . url_for('/transactions/index.php?start=' . h(u($start - $display_count)) . '&page=' . h(u($pages))) . '" class="p-2">';
+                            echo '<i class="fas fa-arrow-circle-left"></i></a>';
+                        }
+
+                        // Create link to pages
+                        for ($i = 1; $i <= $pages; $i++) {
+                            
+                            if ($i != $current_page) {
+                                echo '<a href="' . url_for('/transactions/index.php?start=' . h(u($display_count * ($i - 1))) . '&page=' . h(u($pages))) . '" class="p-2">';
+                                echo $i . '</a>';
+                            } else {
+                                echo '<span class="p-2">' . $i . '</span>';
+                            }
+
+                        }
+
+                        // If not the last page add a next link
+                        if ($current_page != $pages) {
+                            echo '<a href="' . url_for('/transactions/index.php?start=' . h(u($start + $display_count)) . '&page=' . h(u($pages))) . '" class="p-2">';
+                            echo '<i class="fas fa-arrow-circle-right"></i></a>';
+                        }
+
+                        echo '</div><!-- col-sm-6 -->';
+
+                    }
+
+                ?>
             </div> <!-- row -->
         </div> <!-- container -->
     </div> <!-- transactions -->
