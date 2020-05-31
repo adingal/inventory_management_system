@@ -467,9 +467,8 @@
     function find_all_transactions($start, $limit) {
         global $db;
 
-        $start++;
-
-        $sql = "SELECT * FROM transactions ";
+        $sql = "SELECT * FROM transactions AS t, items AS i ";
+        $sql .= "WHERE t.item_id = i.item_id AND i.visible = '1' ";
         $sql .= "LIMIT $start, $limit";
 
         $result = mysqli_query($db, $sql);
