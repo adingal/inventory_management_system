@@ -9,6 +9,9 @@
     // Require login
     require_login();
 
+    // Check if user is admin
+    is_admin();
+
     // Set page title
     $page_title = 'Edit User';
 

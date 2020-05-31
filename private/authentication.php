@@ -37,9 +37,8 @@
     function is_admin() {
         $current_user = find_user_by_id($_SESSION['user_id']);
 
-        if ($current_user['user_type'] == 'Admin') {
-            return true;
+        if ($current_user['user_type'] == 'User') {
+            redirect_to(url_for('users/index.php'));
         }
-        return false;
     }
 ?>
