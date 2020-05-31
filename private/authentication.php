@@ -33,4 +33,13 @@
         }
     }
 
+    // Check if current user is admin
+    function is_admin() {
+        $current_user = find_user_by_id($_SESSION['user_id']);
+
+        if ($current_user['user_type'] == 'Admin') {
+            return true;
+        }
+        return false;
+    }
 ?>
