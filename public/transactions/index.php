@@ -104,32 +104,32 @@
 
                             <!-- Loop on all transactions and create row -->
                             <?php 
-                                while ($transaction = mysqli_fetch_assoc($transactions)) {
+                                while ($transaction = mysqli_fetch_row($transactions)) {
 
                                     // Find user and replace user_id to their names
-                                    $user = find_user_by_id($transaction['user_id']);
+                                    $user = find_user_by_id($transaction[1]);
                                     $user_name = $user['first_name'] . ' ' . $user['last_name'];
 
                                     // Find item and replace item_id to their names
                                     // Test if item is still active
-                                    $item = find_item_by_id($transaction['item_id']);
+                                    $item = find_item_by_id($transaction[2]);
                                     if (!$item) {
                                         continue;
                                     }
                                 
                                     $item_name = $item['item_name'];
-                                    $trans_date = date_create($transaction['transaction_date']);
+                                    $trans_date = date_create($transaction[7]);
                                 ?>
                                 <tr>
-                                    <td><?php echo h($transaction['transaction_id']); ?></td>
+                                    <td><?php echo h($transaction[0]); ?></td>
                                     <td><?php echo h($item_name); ?></td>
-                                    <td class="text-center"><?php echo h($transaction['previous_quantity']); ?></td>
-                                    <td class="text-center"><?php echo h($transaction['quantity']); ?></td>
-                                    <td class="text-center"><?php echo h($transaction['remaining_quantity']); ?></td>
-                                    <td><?php echo h($transaction['transaction_type']); ?></td>
+                                    <td class="text-center"><?php echo h($transaction[3]); ?></td>
+                                    <td class="text-center"><?php echo h($transaction[4]); ?></td>
+                                    <td class="text-center"><?php echo h($transaction[5]); ?></td>
+                                    <td><?php echo h($transaction[6]); ?></td>
                                     <td><?php echo h(date_format($trans_date, 'm/d/Y H:i A')); ?></td>
                                     <td><?php echo h($user_name); ?></td>
-                                    <td><?php echo h($transaction['remarks']); ?></td>
+                                    <td><?php echo h($transaction[8]); ?></td>
                                 </tr>
                             <?php
                                 }
